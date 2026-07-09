@@ -1,21 +1,38 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
   BriefcaseBusiness,
   Boxes,
+  CheckCircle2,
   CircleDot,
+  Clock3,
+  Cloud,
   Code2,
+  Database,
   Diamond,
+  Eye,
   GraduationCap,
+  Globe2,
+  HardDrive,
   Layers3,
+  LineChart,
+  LockKeyhole,
   Mail,
   MessageCircle,
+  MessageSquare,
   Monitor,
   MonitorSmartphone,
   Package,
+  Server,
   ShieldCheck,
   Sparkles,
   SquareCheck,
+  Target,
+  TrendingUp,
   Users,
+  Zap,
 } from "lucide-react";
 
 export type NavItem = {
@@ -62,16 +79,40 @@ export type TechItem = {
 };
 
 export type Service = {
+  number: string;
   title: string;
+  subtitle: string;
   description: string;
+  price: string;
+  priceSuffix: string;
+  accent: string;
   icon: LucideIcon;
+  visualLabel: string;
+  visualValue: string;
+  visualMeta: string;
+  included: string;
+  features: Array<{
+    title: string;
+    description: string;
+    icon: LucideIcon;
+  }>;
+  metrics: Array<{
+    value: string;
+    label: string;
+  }>;
+  plans?: Array<{
+    name: string;
+    price: string;
+    description: string;
+  }>;
+  visualIcons: LucideIcon[];
 };
 
 export const navigation: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Get Started", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" },
+  { label: "Services", href: "/services" },
+  { label: "Get Started", href: "/get-started" },
 ];
 
 export const experience: TimelineItem[] = [
@@ -266,19 +307,229 @@ export function getTechByName(name: string) {
 
 export const services: Service[] = [
   {
-    title: "Websites",
-    description: "Minimal marketing and portfolio sites with clear structure and strong responsive behavior.",
+    number: "01",
+    title: "Web App Development",
+    subtitle: "Modern Full-Stack Applications",
+    description:
+      "Custom web applications built with clean architecture, fast interfaces, and reliable deployment workflows for growing businesses.",
+    price: "Custom",
+    priceSuffix: "project",
+    accent: "#111111",
     icon: MonitorSmartphone,
+    visualLabel: "Applications Built",
+    visualValue: "35+",
+    visualMeta: "95/100 average score",
+    included: "Full-stack build • Responsive UI • Deployment setup",
+    features: [
+      {
+        title: "Responsive Framework",
+        description: "Interfaces shaped for desktop, tablet, and mobile from the first layout pass.",
+        icon: Monitor,
+      },
+      {
+        title: "Scalable Architecture",
+        description: "Reusable modules, clean data flow, and room for future product expansion.",
+        icon: Layers3,
+      },
+      {
+        title: "Secure Foundations",
+        description: "Authentication-ready patterns, validation, and practical access control thinking.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Production Launch",
+        description: "Deployment, performance checks, and polish before the product goes live.",
+        icon: Cloud,
+      },
+    ],
+    metrics: [
+      { value: "95/100", label: "Performance" },
+      { value: "3-6 wks", label: "Typical build" },
+      { value: "100%", label: "Responsive" },
+    ],
+    plans: [
+      { name: "Starter", price: "Custom", description: "Landing page or focused product build" },
+      { name: "Growth", price: "Custom", description: "Multi-page app with integrations" },
+      { name: "Scale", price: "Custom", description: "Dashboard, auth, and data workflows" },
+    ],
+    visualIcons: [Code2, Server, Cloud, ShieldCheck],
   },
   {
-    title: "Interfaces",
-    description: "Reusable UI systems for product pages, dashboards, forms, and service flows.",
-    icon: Layers3,
+    number: "02",
+    title: "Website Monitoring & Analytics",
+    subtitle: "Real-time Performance Tracking",
+    description:
+      "Comprehensive website monitoring and analytics that tracks uptime, performance metrics, user behavior, and actionable optimization signals.",
+    price: "GHS 20",
+    priceSuffix: "month",
+    accent: "#f59e0b",
+    icon: Eye,
+    visualLabel: "Sites Monitored",
+    visualValue: "450+",
+    visualMeta: "99.96% uptime",
+    included: "5 Websites • Real-time Alerts",
+    features: [
+      {
+        title: "Uptime Monitoring",
+        description: "24/7 monitoring with fast alerts for downtime and performance issues.",
+        icon: Activity,
+      },
+      {
+        title: "Performance Analytics",
+        description: "Insights on load times, engagement, and conversion patterns.",
+        icon: LineChart,
+      },
+      {
+        title: "Smart Alerts",
+        description: "Custom notifications through SMS, email, and webhooks for critical events.",
+        icon: AlertTriangle,
+      },
+      {
+        title: "Goal Tracking",
+        description: "Monitor conversions, form submissions, and business objectives.",
+        icon: Target,
+      },
+    ],
+    metrics: [
+      { value: "30 sec", label: "Check frequency" },
+      { value: "2 years", label: "Data retention" },
+      { value: "<500ms", label: "Response time" },
+    ],
+    plans: [
+      { name: "Starter", price: "GHS 20/mo", description: "2 Websites • Uptime monitoring" },
+      { name: "Pro", price: "GHS 40/mo", description: "10 Websites • Performance monitoring" },
+      { name: "Enterprise", price: "GHS 80/mo", description: "Unlimited sites • Custom dashboards" },
+    ],
+    visualIcons: [Activity, Eye, Target, LineChart, Clock3],
   },
   {
-    title: "Polish",
-    description: "Refining spacing, hierarchy, accessibility, and interaction states for cleaner launches.",
-    icon: Sparkles,
+    number: "03",
+    title: "PostgreSQL Database",
+    subtitle: "Enterprise-Grade Database Hosting",
+    description:
+      "Reliable, scalable PostgreSQL database hosting with high availability, automated backups, and enterprise-level security for critical applications.",
+    price: "GHS 100-300",
+    priceSuffix: "month",
+    accent: "#3b82f6",
+    icon: Database,
+    visualLabel: "Active Databases",
+    visualValue: "1,200+",
+    visualMeta: "+15% this month",
+    included: "5GB Storage • Daily Backups",
+    features: [
+      {
+        title: "Enterprise Security",
+        description: "End-to-end encryption, SSL/TLS protocols, and advanced access controls.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "High Performance",
+        description: "SSD storage, optimized queries, and sub-millisecond response tuning.",
+        icon: Zap,
+      },
+      {
+        title: "99.9% Uptime SLA",
+        description: "Guaranteed availability with automated failover and monitoring.",
+        icon: Server,
+      },
+      {
+        title: "Automated Backups",
+        description: "Daily backups with point-in-time recovery and quick restoration.",
+        icon: Clock3,
+      },
+    ],
+    metrics: [
+      { value: "99.9%", label: "Uptime" },
+      { value: "<50ms", label: "Response time" },
+      { value: "Up to 1TB", label: "Storage" },
+    ],
+    visualIcons: [HardDrive, Database, Layers3, LockKeyhole, Activity],
+  },
+  {
+    number: "04",
+    title: "SMS Service",
+    subtitle: "Global SMS API Platform",
+    description:
+      "Powerful SMS API for sending transactional and marketing messages worldwide with strong delivery rates and comprehensive analytics.",
+    price: "GHS 0.30-0.80",
+    priceSuffix: "message",
+    accent: "#10b981",
+    icon: MessageSquare,
+    visualLabel: "Messages Sent",
+    visualValue: "2.5M+",
+    visualMeta: "This month",
+    included: "Global Coverage • Real-time Tracking",
+    features: [
+      {
+        title: "Global Coverage",
+        description: "Send SMS to 200+ countries with local phone number support.",
+        icon: Globe2,
+      },
+      {
+        title: "Instant Delivery",
+        description: "Real-time message delivery with detailed status tracking.",
+        icon: Zap,
+      },
+      {
+        title: "Developer-First API",
+        description: "RESTful API with SDKs, webhooks, and detailed documentation.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "99%+ Delivery Rate",
+        description: "Reliable delivery through multiple carrier routes and redundancy.",
+        icon: CheckCircle2,
+      },
+    ],
+    metrics: [
+      { value: "99.2%", label: "Delivery rate" },
+      { value: "200+", label: "Countries" },
+      { value: "99.9%", label: "API uptime" },
+    ],
+    visualIcons: [MonitorSmartphone, MessageSquare, Globe2, BarChart3],
+  },
+  {
+    number: "05",
+    title: "Email Service",
+    subtitle: "Professional Email Solutions",
+    description:
+      "Professional email hosting and transactional email API for communication, marketing campaigns, and business correspondence.",
+    price: "GHS 50-150",
+    priceSuffix: "month",
+    accent: "#8b5cf6",
+    icon: Mail,
+    visualLabel: "Emails Delivered",
+    visualValue: "850K+",
+    visualMeta: "99.8% success rate",
+    included: "Custom Domain • 10GB Storage",
+    features: [
+      {
+        title: "Advanced Security",
+        description: "Anti-spam protection, malware scanning, and encryption.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Fast Delivery",
+        description: "Optimized infrastructure for instant email delivery.",
+        icon: Zap,
+      },
+      {
+        title: "Custom Domains",
+        description: "Host emails on your domain with complete DNS control.",
+        icon: Server,
+      },
+      {
+        title: "24/7 Support",
+        description: "Round-the-clock technical support and monitoring.",
+        icon: Clock3,
+      },
+    ],
+    metrics: [
+      { value: "98.5%", label: "Delivery rate" },
+      { value: "<0.1%", label: "Spam score" },
+      { value: "<2hrs", label: "Support response" },
+    ],
+    visualIcons: [Mail, Users, Monitor, Cloud],
   },
 ];
 

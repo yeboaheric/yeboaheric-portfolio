@@ -145,11 +145,11 @@ const projectsPageNavigation = [
     },
     {
         label: "Services",
-        href: "/#services"
+        href: "/services"
     },
     {
-        label: "Contact",
-        href: "/#contact"
+        label: "Get Started",
+        href: "/get-started"
     }
 ];
 function ProjectsPage() {

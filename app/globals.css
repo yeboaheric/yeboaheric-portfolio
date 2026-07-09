@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "PP Formula SemiExtended", "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "SFMono-Regular", ui-monospace, monospace;
 }
 
@@ -346,6 +346,86 @@ textarea {
   animation: scroll-indicator-gentle 1.8s ease-in-out 0.9s infinite;
 }
 
+.services-page {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.get-started-page {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.get-started-input,
+.get-started-textarea,
+.get-started-select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: #fafafa;
+  color: var(--color-primary);
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.get-started-input,
+.get-started-select {
+  min-height: 4.5rem;
+  padding: 0 1.25rem;
+}
+
+.get-started-textarea {
+  min-height: 10rem;
+  padding: 1.15rem 1.25rem;
+  resize: vertical;
+}
+
+.get-started-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 3.5rem;
+}
+
+.get-started-input::placeholder,
+.get-started-textarea::placeholder,
+.get-started-select:invalid {
+  color: #a9b2c1;
+}
+
+.get-started-input:focus,
+.get-started-textarea:focus,
+.get-started-select:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 4px rgb(0 0 0 / 0.05);
+  background: #ffffff;
+}
+
+.get-started-checkline {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 4.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+  background: #ffffff;
+  padding: 0.85rem 1.1rem;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.get-started-checkline:hover {
+  border-color: #cfcfcf;
+  background: #fcfcfc;
+}
+
+.get-started-checkbox {
+  width: 1.45rem;
+  height: 1.45rem;
+  margin: 0;
+  accent-color: #111111;
+}
+
 html[data-theme="dark"] {
   color-scheme: dark;
   --color-background: #0b0b0b;
@@ -426,6 +506,48 @@ html[data-theme="dark"] .border-neutral-200,
 html[data-theme="dark"] .border-neutral-300,
 html[data-theme="dark"] .border-black {
   border-color: var(--color-border) !important;
+}
+
+html[data-theme="dark"] .services-page,
+html[data-theme="dark"] .services-page .bg-\[\#fbfbfa\] {
+  background: var(--color-background) !important;
+}
+
+html[data-theme="dark"] .get-started-page {
+  background: var(--color-background) !important;
+}
+
+html[data-theme="dark"] .get-started-input,
+html[data-theme="dark"] .get-started-textarea,
+html[data-theme="dark"] .get-started-select,
+html[data-theme="dark"] .get-started-checkline {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-primary) !important;
+}
+
+html[data-theme="dark"] .get-started-input::placeholder,
+html[data-theme="dark"] .get-started-textarea::placeholder {
+  color: var(--color-muted) !important;
+}
+
+html[data-theme="dark"] .get-started-input:focus,
+html[data-theme="dark"] .get-started-textarea:focus,
+html[data-theme="dark"] .get-started-select:focus {
+  background: var(--color-hover-surface) !important;
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 0.06) !important;
+}
+
+html[data-theme="dark"] .services-page .bg-neutral-100\/80 {
+  background: var(--color-surface) !important;
+}
+
+html[data-theme="dark"] .services-page .bg-neutral-50 {
+  background: var(--color-section) !important;
+}
+
+html[data-theme="dark"] .services-page .shadow-\[0_32px_70px_rgba\(0\,0\,0\,0\.12\)\] {
+  box-shadow: 0 32px 70px rgb(0 0 0 / 0.35) !important;
 }
 
 @keyframes scroll-indicator-gentle {

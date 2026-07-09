@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 const projectsPageNavigation: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
-  { label: "Services", href: "/#services" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Services", href: "/services" },
+  { label: "Get Started", href: "/get-started" },
 ];
 
 export default function ProjectsPage() {
