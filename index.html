@@ -1,173 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yeboah Eric's Portfolio</title>
+  <meta name="description" content="A minimal portfolio for Eric Yeboah, Creative Engineer based in Accra." />
+  <title>Eric Yeboah | Creative Engineer</title>
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem("portfolio-theme");
+        const theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
 
-  <!-- Bootstrap CSS from node_modules -->
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Your custom styles -->
-  <link rel="stylesheet" href="style.css" />
+      try {
+        if (!sessionStorage.getItem("portfolio-intro-seen")) {
+          document.documentElement.dataset.intro = "pending";
+        }
+      } catch (error) {
+        document.documentElement.dataset.intro = "pending";
+      }
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css?v=20260708-sectiontitles-1" />
 </head>
-<body>
+<body class="bg-background text-primary">
+  <div id="introLoader" class="intro-loader" aria-live="polite">
+    <button id="introEnter" class="intro-name-button" type="button" aria-label="Enter Yeboah Eric portfolio">
+      <span class="intro-name" aria-hidden="true">
+        <span class="intro-char" style="--i: 0">Y</span><span class="intro-char" style="--i: 1">e</span><span class="intro-char" style="--i: 2">b</span><span class="intro-char" style="--i: 3">o</span><span class="intro-char" style="--i: 4">a</span><span class="intro-char" style="--i: 5">h</span><span class="intro-char intro-space" style="--i: 6"> </span><span class="intro-char" style="--i: 7">E</span><span class="intro-char" style="--i: 8">r</span><span class="intro-char" style="--i: 9">i</span><span class="intro-char" style="--i: 10">c</span><span class="intro-char" style="--i: 11">.</span><span class="intro-caret" aria-hidden="true"></span>
+      </span>
+      <span class="sr-only">Yeboah Eric.</span>
+      <span class="intro-role">Creative Engineer</span>
+    </button>
+  </div>
 
-  <!-- ===================== NAVBAR ===================== -->
-  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Yeboah Eric</a>
-
-      <!-- Mobile hamburger button -->
-      <button class="navbar-toggler" type="button"
-        data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto gap-3">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
+  <header class="site-header sticky top-0 z-50 border-b border-transparent bg-white/95 backdrop-blur transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex h-10 w-10 items-center justify-center rounded-full border border-black text-xs font-bold tracking-[0.16em]">YOE</a>
+      <div class="hidden items-center gap-1 md:flex" id="desktopNav"></div>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 hover:border-black hover:bg-neutral-100" aria-label="Switch theme icon to moon"><i data-lucide="sun"></i></button>
+        <button id="menuToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 hover:border-black hover:bg-neutral-100 md:hidden" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu"></i></button>
       </div>
-    </div>
-  </nav>
+    </nav>
+    <div id="mobileNav" class="mobile-nav hidden border-t border-neutral-200 bg-white px-5 py-4 md:hidden"></div>
+  </header>
 
-  <!-- ===================== HERO ===================== -->
-  <section id="hero">
-    <div class="container h-100 d-flex align-items-center">
-      <div class="hero-content">
-        <p class="hero-tag">👋 Hello, I'm</p>
-        <h1 class="hero-name">Yeboah Osei Eric</h1>
-        <h2 class="hero-title">Frontend Developer <span class="accent">&amp;</span> Problem Solver</h2>
-        <p class="hero-desc">I build clean, fast, and user-friendly websites. Currently learning and shipping projects every week.</p>
-        <div class="d-flex gap-3 flex-wrap mt-4">
-          <a href="#projects" class="btn btn-primary-custom">View My Work</a>
-          <a href="#contact" class="btn btn-outline-custom">Get In Touch</a>
+  <main>
+    <section id="home" class="px-5 pb-20 pt-20 text-center sm:px-6 sm:pb-28 lg:px-8">
+      <div class="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col items-center justify-center">
+        <div class="hero-badge flex h-20 w-20 items-center justify-center rounded-full border border-black text-sm font-semibold tracking-[0.2em] sm:h-24 sm:w-24">AY</div>
+        <h1 class="mt-10 max-w-5xl text-balance text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl lg:text-8xl">
+          <span class="hero-line block">Eric Yeboah</span>
+          <span class="hero-line block">Creative Engineer</span>
+        </h1>
+        <div class="hero-divider mt-8 h-px w-full max-w-2xl bg-neutral-200"></div>
+        <p class="hero-subtitle mt-8 max-w-2xl text-balance text-base leading-8 text-neutral-600 sm:text-lg">
+          Crafting clean, modern digital experiences from Accra to the world. I blend code and graphic design to create purposeful visuals and engaging digital products.
+
+        </p>
+        <div class="hero-actions mt-10 flex w-full max-w-md flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row">
+          <a href="#projects" class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-semibold text-white hover:bg-neutral-800">View Projects <i data-lucide="arrow-up-right"></i></a>
+          <a href="#contact" class="inline-flex min-h-12 items-center justify-center rounded-full border border-neutral-300 px-6 text-sm font-semibold hover:border-black">Contact Me</a>
+        </div>
+        <a href="#about" class="scroll-indicator mt-16 inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500 hover:border-black hover:text-black">Scroll <i data-lucide="arrow-down"></i></a>
+      </div>
+    </section>
+
+    <section id="about" class="border-t border-neutral-200 px-5 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="corner-lines h-fit p-8 sm:p-10">
+          <h2 class="section-title-xl">About Me</h2>
+          <p class="section-accent mt-7">Hello there</p>
+          <div class="mt-8 grid gap-5 text-base leading-8 text-neutral-600">
+            <p>I am Eric Yeboah, a full-stack minded creative engineer based in Accra, Ghana. I build digital products that feel clear, useful, and carefully composed.</p>
+            <p>My work sits between minimal design and clean code, with a focus on interfaces that help people move through information without friction.</p>
+            <p>I enjoy turning rough ideas into structured websites, product screens, and systems that can grow without becoming noisy.</p>
+          </div>
+          <div class="about-approach mt-10 border-t border-neutral-200 pt-8">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em] text-black sm:text-3xl">My approach</h3>
+            <div id="approachGrid" class="approach-grid-compact mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2"></div>
+          </div>
+        </div>
+        <div class="grid content-start gap-10">
+          <section>
+            <h3 class="timeline-heading inline-flex items-center gap-2"><i data-lucide="briefcase-business"></i>Experience</h3>
+            <div id="experienceList" class="space-y-4"></div>
+          </section>
+          <section>
+            <h3 class="timeline-heading inline-flex items-center gap-2"><i data-lucide="graduation-cap"></i>Education</h3>
+            <div id="educationList" class="space-y-4"></div>
+          </section>
         </div>
       </div>
-    </div>
-    <div class="hero-blob"></div>
-  </section>
+    </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="section-pad">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-5">
-          <div class="about-img-wrap">
-            <div class="about-img-placeholder">
-              <span>Your Photo</span>
+    <section id="projects" class="border-t border-neutral-200 px-5 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="section-title-xl">Portfolio</h2>
+        <p class="section-accent mt-7">Selected Projects</p>
+        <div id="projectsList" class="mt-6"></div>
+        <a href="#contact" class="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-neutral-300 px-6 text-sm font-semibold text-black hover:border-black hover:bg-neutral-50">View All Projects <i data-lucide="arrow-up-right"></i></a>
+      </div>
+    </section>
+
+    <section id="services" class="border-t border-neutral-200 bg-neutral-50 px-5 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="section-title-xl">Services</h2>
+        <p class="section-accent mt-7 max-w-2xl">Focused support for digital launches.</p>
+        <div id="servicesList" class="mt-12 grid gap-4 md:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section border-t border-border px-5 sm:px-6 lg:px-8">
+      <div class="skills-shell">
+        <div class="skills-content">
+          <h2 class="skills-title">Skills</h2>
+          <div class="skills-groups" aria-label="Skill groups">
+            <div class="skills-group">
+              <h3 class="skills-group-title">Capabilities</h3>
+              <ul id="skillsCapabilities" class="skills-list"></ul>
+            </div>
+            <div class="skills-group">
+              <h3 class="skills-group-title">Languages</h3>
+              <ul id="skillsLanguages" class="skills-list"></ul>
+            </div>
+            <div class="skills-group skills-group-wide">
+              <h3 class="skills-group-title">Tech</h3>
+              <ul id="skillsTech" class="skills-list skills-list-columns"></ul>
             </div>
           </div>
         </div>
-        <div class="col-lg-7">
-          <p class="section-tag">About Me</p>
-          <h2 class="section-title">A dev on a mission</h2>
-          <p class="section-body">
-            I'm a self-taught developer based in <strong>Accra, Ghana</strong>, on a mission to build
-            real-world projects while I learn. Every project is a new lesson — from
-            HTML structure to JavaScript logic to making things look great with Bootstrap.
-          </p>
-          <p class="section-body">
-            When I'm not coding, you'll find me [something personal about you]. I believe the
-            best way to learn is to ship things that actually work.
-          </p>
-          <div class="about-stats d-flex gap-4 mt-4 flex-wrap">
-            <div class="stat-box">
-              <span class="stat-num" data-target="5">0</span>
-              <span class="stat-label">Projects Built</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-num" data-target="3">0</span>
-              <span class="stat-label">Technologies</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-num" data-target="100">0</span>
-              <span class="stat-label">% Committed</span>
-            </div>
+        <div class="skills-marquee-panel" aria-label="Animated technology stack">
+          <div id="skillsMarquee" class="skills-marquee"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-neutral-200 px-5 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="corner-lines h-fit p-8 sm:p-10">
+          <h2 class="section-title-xl">Contact</h2>
+          <p class="section-accent mt-7">Let’s collaborate</p>
+          <p class="mt-6 max-w-md text-base leading-8 text-neutral-600">Available for thoughtful websites, product interfaces, and clean digital systems.</p>
+          <a href="mailto:oseiyeboaheric@outlook.com" class="mt-8 flex w-fit items-center gap-3 rounded-full border border-neutral-200 px-4 py-3 text-sm font-medium hover:border-black"><i data-lucide="mail"></i> oseiyeboaheric@outlook.com</a>
+          <div class="mt-5 flex gap-3">
+            <a class="icon-button" href="https://github.com/yeboaheric" target="_blank" rel="noreferrer" aria-label="GitHub"><i data-lucide="code-2"></i></a>
+            <a class="icon-button" href="https://www.linkedin.com/in/yeboah-osei-eric-329b57296/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i data-lucide="badge-check"></i></a>
           </div>
         </div>
+        <form action="mailto:oseiyeboaheric@outlook.com" method="post" enctype="text/plain" class="rounded-[2rem] border border-neutral-200 p-5 sm:p-8">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label class="form-field"><span>Name</span><input name="name" required /></label>
+            <label class="form-field"><span>Email</span><input type="email" name="email" required /></label>
+            <label class="form-field sm:col-span-2"><span>Message</span><textarea name="message" rows="7" required></textarea></label>
+          </div>
+          <button type="submit" class="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-semibold text-white hover:bg-neutral-800">Send Message <i data-lucide="send"></i></button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===================== SKILLS ===================== -->
-  <section id="skills" class="section-pad bg-alt">
-    <div class="container">
-      <p class="section-tag text-center">What I Work With</p>
-      <h2 class="section-title text-center mb-5">My Skills</h2>
-      <div class="row g-4" id="skillsGrid">
-        <!-- Skills are injected by JavaScript -->
+  <footer class="bg-black px-5 py-12 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      <div>
+        <div class="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-xs font-bold tracking-[0.16em]">YOE</div>
+        <p class="mt-6 max-w-sm text-sm leading-7 text-neutral-400">Eric Yeboah crafts minimal digital experiences from Accra for clients and collaborators worldwide.</p>
+        <p class="mt-8 text-sm text-neutral-500">© 2026 YE. All rights reserved.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== PROJECTS ===================== -->
-  <section id="projects" class="section-pad">
-    <div class="container">
-      <p class="section-tag text-center">What I've Built</p>
-      <h2 class="section-title text-center mb-5">Projects</h2>
-      <div class="row g-4" id="projectsGrid">
-        <!-- Projects are injected by JavaScript -->
+      <div>
+        <h2 class="footer-heading">Navigation</h2>
+        <div id="footerNav" class="mt-5 grid gap-3"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="section-pad bg-alt">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-7 text-center">
-          <p class="section-tag">Get In Touch</p>
-          <h2 class="section-title">Let's work together</h2>
-          <p class="section-body mb-5">
-            I'm always open to new opportunities, collaborations, or just a good chat about code.
-          </p>
+      <div>
+        <h2 class="footer-heading">Contact</h2>
+        <div class="mt-5 grid gap-3 text-sm text-neutral-300">
+          <a href="mailto:oseiyeboaheric@outlook.com" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="mail"></i>oseiyeboaheric@outlook.com</a>
+          <p class="inline-flex items-center gap-2"><i data-lucide="map-pin"></i>Accra, Ghana</p>
+          <div class="mt-3 flex gap-3">
+            <a class="footer-icon-button" href="https://github.com/yeboaheric" target="_blank" rel="noreferrer" aria-label="GitHub"><i data-lucide="code-2"></i></a>
+            <a class="footer-icon-button" href="https://www.linkedin.com/in/yeboah-osei-eric-329b57296/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i data-lucide="badge-check"></i></a>
+          </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <form id="contactForm" class="contact-form">
-            <div class="mb-4">
-              <input type="text" id="nameInput" class="form-input" placeholder="Your Name" required />
-            </div>
-            <div class="mb-4">
-              <input type="email" id="emailInput" class="form-input" placeholder="Your Email" required />
-            </div>
-            <div class="mb-4">
-              <textarea id="messageInput" class="form-input" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary-custom w-100">Send Message</button>
-            <p id="formFeedback" class="form-feedback mt-3"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer>
-    <div class="container text-center">
-      <p>Built with HTML, CSS, Bootstrap &amp; JavaScript &mdash; by <strong>Your Name</strong></p>
-      <div class="footer-links mt-2">
-        <a href="https://github.com/yeboaheric" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/yeboah-osei-eric-329b57296/" target="_blank">LinkedIn</a>
-        <a href="mailto:oseiyeboaheric@outlook.com">Email</a>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS from node_modules -->
-  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Your custom JS -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20260708-aboutspacing-1"></script>
 </body>
 </html>

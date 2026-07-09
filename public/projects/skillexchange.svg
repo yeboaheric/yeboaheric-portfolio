@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">SkillExchange product interface screenshot</title>
+  <rect width="1440" height="900" fill="#ffffff"/>
+  <rect x="80" y="72" width="1280" height="756" rx="38" fill="#fafafa" stroke="#e5e5e5"/>
+  <rect x="128" y="126" width="260" height="648" rx="28" fill="#111111"/>
+  <text x="176" y="194" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">SkillExchange</text>
+  <rect x="176" y="250" width="164" height="34" rx="17" fill="#ffffff" opacity=".12"/>
+  <rect x="176" y="308" width="118" height="18" rx="9" fill="#ffffff" opacity=".32"/>
+  <rect x="176" y="356" width="142" height="18" rx="9" fill="#ffffff" opacity=".2"/>
+  <rect x="176" y="404" width="132" height="18" rx="9" fill="#ffffff" opacity=".2"/>
+  <rect x="452" y="126" width="792" height="106" rx="28" fill="#ffffff" stroke="#e5e5e5"/>
+  <text x="500" y="190" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#111111">Find skills. Share yours.</text>
+  <rect x="452" y="278" width="356" height="210" rx="30" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect x="844" y="278" width="356" height="210" rx="30" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect x="452" y="536" width="748" height="192" rx="30" fill="#ffffff" stroke="#e5e5e5"/>
+  <circle cx="520" cy="356" r="38" fill="#e5e5e5"/>
+  <circle cx="912" cy="356" r="38" fill="#e5e5e5"/>
+  <rect x="580" y="334" width="160" height="20" rx="10" fill="#111111"/>
+  <rect x="972" y="334" width="160" height="20" rx="10" fill="#111111"/>
+  <rect x="580" y="374" width="196" height="14" rx="7" fill="#a3a3a3"/>
+  <rect x="972" y="374" width="160" height="14" rx="7" fill="#a3a3a3"/>
+  <rect x="520" y="606" width="612" height="20" rx="10" fill="#171717"/>
+  <rect x="520" y="652" width="510" height="16" rx="8" fill="#a3a3a3"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">Yaarnies Camera Store website screenshot</title>
+  <rect width="1440" height="900" fill="#fbfaf7"/>
+  <rect width="1440" height="72" fill="#f59e0b"/>
+  <rect y="72" width="1440" height="480" fill="#0a0a0a"/>
+  <circle cx="1120" cy="312" r="170" fill="#f5f5f4" opacity=".22"/>
+  <circle cx="460" cy="338" r="210" fill="#fafafa" opacity=".18"/>
+  <rect x="492" y="302" width="456" height="74" rx="12" fill="#ffffff"/>
+  <text x="720" y="350" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="700" fill="#111111">Capture Your Moments</text>
+  <text x="720" y="398" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#ffffff">Instant cameras, digital gear, and creative accessories</text>
+  <rect x="606" y="432" width="110" height="42" rx="21" fill="#ffffff"/>
+  <rect x="730" y="432" width="144" height="42" rx="21" fill="none" stroke="#ffffff"/>
+  <text x="661" y="458" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#111111">Shop Now</text>
+  <text x="802" y="458" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#ffffff">Best Sellers</text>
+  <rect x="120" y="620" width="240" height="210" rx="22" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect x="420" y="620" width="240" height="210" rx="22" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect x="720" y="620" width="240" height="210" rx="22" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect x="1020" y="620" width="240" height="210" rx="22" fill="#ffffff" stroke="#e5e5e5"/>
+  <circle cx="240" cy="704" r="48" fill="#e7e5e4"/>
+  <circle cx="540" cy="704" r="48" fill="#d6d3d1"/>
+  <circle cx="840" cy="704" r="48" fill="#e7e5e4"/>
+  <circle cx="1140" cy="704" r="48" fill="#d6d3d1"/>
+  <rect x="168" y="780" width="144" height="16" rx="8" fill="#d4d4d4"/>
+  <rect x="468" y="780" width="144" height="16" rx="8" fill="#d4d4d4"/>
+  <rect x="768" y="780" width="144" height="16" rx="8" fill="#d4d4d4"/>
+  <rect x="1068" y="780" width="144" height="16" rx="8" fill="#d4d4d4"/>
+</svg>

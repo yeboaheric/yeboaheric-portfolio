@@ -1,0 +1,11 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="affinityTitle">
+  <title id="affinityTitle">Affinity</title>
+  <defs>
+    <linearGradient id="affinityGradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A875FF"/>
+      <stop offset="1" stop-color="#4C2AA8"/>
+    </linearGradient>
+  </defs>
+  <path d="M12.3 2 20.8 6.68v10.64L12.3 22 3.8 17.32V6.68L12.3 2Z" fill="url(#affinityGradient)"/>
+  <path d="M7.1 16.78 11.4 7.2h2.14l3.36 7.53-1.68.8-.73-1.74H10.1l-.82 2.05-2.18.94Zm3.65-4.7h3l-1.42-3.44-1.58 3.45Z" fill="#fff"/>
+</svg>

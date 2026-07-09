@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">Adwoa Fosua Guesthouse SaaS dashboard screenshot</title>
+  <rect width="1440" height="900" fill="#f8fafc"/>
+  <rect x="72" y="64" width="1296" height="772" rx="34" fill="#ffffff" stroke="#e5e7eb"/>
+  <rect x="72" y="64" width="238" height="772" rx="34" fill="#111111"/>
+  <text x="126" y="140" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Guesthouse</text>
+  <rect x="126" y="208" width="128" height="28" rx="14" fill="#ffffff" opacity=".14"/>
+  <rect x="126" y="268" width="92" height="16" rx="8" fill="#ffffff" opacity=".28"/>
+  <rect x="126" y="316" width="118" height="16" rx="8" fill="#ffffff" opacity=".2"/>
+  <rect x="126" y="364" width="104" height="16" rx="8" fill="#ffffff" opacity=".2"/>
+  <text x="374" y="142" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#111111">Bookings Overview</text>
+  <rect x="374" y="196" width="240" height="138" rx="28" fill="#fafafa" stroke="#e5e7eb"/>
+  <rect x="646" y="196" width="240" height="138" rx="28" fill="#fafafa" stroke="#e5e7eb"/>
+  <rect x="918" y="196" width="240" height="138" rx="28" fill="#fafafa" stroke="#e5e7eb"/>
+  <rect x="374" y="390" width="784" height="346" rx="30" fill="#ffffff" stroke="#e5e7eb"/>
+  <rect x="420" y="456" width="684" height="20" rx="10" fill="#111111"/>
+  <rect x="420" y="526" width="602" height="16" rx="8" fill="#d4d4d8"/>
+  <rect x="420" y="588" width="642" height="16" rx="8" fill="#d4d4d8"/>
+  <rect x="420" y="650" width="520" height="16" rx="8" fill="#d4d4d8"/>
+  <text x="422" y="274" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700" fill="#111111">128</text>
+  <text x="694" y="274" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700" fill="#111111">42</text>
+  <text x="966" y="274" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700" fill="#111111">91%</text>
+</svg>

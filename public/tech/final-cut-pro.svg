@@ -1,0 +1,13 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="finalCutTitle">
+  <title id="finalCutTitle">Final Cut Pro</title>
+  <defs>
+    <linearGradient id="fcpGradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34C8FF"/>
+      <stop offset="1" stop-color="#7A5CFA"/>
+    </linearGradient>
+  </defs>
+  <rect x="2.5" y="3.5" width="19" height="17" rx="4" fill="url(#fcpGradient)"/>
+  <path d="M8.1 8.2h7.8v1.8H8.1V8.2Zm0 2.9h4.6V13H8.1v-1.9Zm0 3h7.8V16H8.1v-1.9Z" fill="#fff"/>
+  <path d="m14.8 6.3 3 3-1.28 1.28-3-3L14.8 6.3Z" fill="#FFCC4D"/>
+  <path d="m13.96 7.15 3 3-.82.82-3-3 .82-.82Z" fill="#111827" opacity=".18"/>
+</svg>
