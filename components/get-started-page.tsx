@@ -242,11 +242,11 @@ export function GetStartedPage() {
 
   return (
     <div className="get-started-page bg-white text-black">
-      <main className="mx-auto max-w-7xl px-5 pb-24 pt-8 sm:px-6 lg:px-8">
-        <section className="mx-auto max-w-7xl pb-14 pt-4">
-          <div className="inline-flex items-center gap-3 text-xl font-semibold uppercase tracking-[0.04em] text-black sm:text-2xl">
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white">
-              <Code2 size={34} strokeWidth={2.2} />
+      <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-6xl pb-14 pt-4">
+          <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.08em] text-black sm:text-base">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white">
+              <Code2 size={28} strokeWidth={2.1} />
             </span>
             <span>LET&apos;S CREATE MAGIC</span>
           </div>
@@ -255,13 +255,13 @@ export function GetStartedPage() {
             initial={reduceMotion ? false : { opacity: 0, y: 28, filter: "blur(8px)" }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, ease: softEase }}
-            className="mt-10 max-w-5xl text-balance text-[4rem] font-light leading-[0.9] tracking-[-0.07em] text-black sm:text-[5.2rem] lg:text-[6.6rem]"
+            className="mt-10 max-w-5xl text-balance text-[3.5rem] font-light leading-[0.92] tracking-[-0.06em] text-black sm:text-[4.7rem] lg:text-[5.9rem]"
           >
             Your Dream Website
             <span className="block font-medium">Starts Here</span>
           </motion.h1>
 
-          <p className="mt-10 max-w-5xl text-balance text-2xl leading-[1.45] text-neutral-600 sm:text-[1.9rem]">
+          <p className="mt-8 max-w-4xl text-balance text-lg leading-[1.6] text-neutral-600 sm:text-[1.35rem]">
             Every great website begins with a vision. I&apos;m here to transform your ideas into a
             stunning digital reality. Fill out this comprehensive form, and I&apos;ll craft a website that
             not only looks beautiful but delivers results.
@@ -270,52 +270,52 @@ export function GetStartedPage() {
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {benefits.map((benefit) => (
               <div key={benefit.title} className="flex items-start gap-5">
-                <span className="inline-flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-full bg-black text-white">
-                  <Check size={34} strokeWidth={2.2} />
+                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black text-white">
+                  <Check size={24} strokeWidth={2.2} />
                 </span>
                 <div>
-                  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-black sm:text-[2.2rem]">
+                  <h2 className="text-xl font-semibold tracking-[-0.03em] text-black sm:text-[1.75rem]">
                     {benefit.title}
                   </h2>
-                  <p className="mt-2 text-xl text-neutral-600 sm:text-[1.9rem]">{benefit.description}</p>
+                  <p className="mt-1 text-base text-neutral-600 sm:text-lg">{benefit.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.04)] sm:p-10 lg:p-14">
-          <h2 className="text-3xl font-semibold tracking-[-0.04em] text-black sm:text-[3rem]">
+        <section className="mx-auto max-w-6xl rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.04)] sm:p-10 lg:p-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-black sm:text-[2.25rem]">
             Quick Questions? Direct Message
           </h2>
-          <p className="mt-6 max-w-4xl text-xl leading-[1.55] text-neutral-600 sm:text-[1.95rem]">
+          <p className="mt-5 max-w-4xl text-base leading-[1.65] text-neutral-600 sm:text-[1.15rem]">
             Not sure about something? Have specific requirements? You can use our comprehensive form or reach out directly:
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
             <div>
-              <p className="inline-flex items-center gap-3 text-xl font-semibold text-black sm:text-[2rem]">
+              <p className="inline-flex items-center gap-3 text-lg font-semibold text-black sm:text-[1.35rem]">
                 <FolderOpen size={24} strokeWidth={1.9} />
                 Fill Out Full Requirements
               </p>
               <a
                 href="#intro-form"
-                className="mt-5 inline-flex min-h-[4.8rem] w-full items-center justify-center gap-3 rounded-full bg-black px-8 text-2xl font-semibold text-white transition hover:bg-neutral-800 sm:text-[2rem]"
+                className="mt-5 inline-flex min-h-[4.25rem] w-full items-center justify-center gap-3 rounded-full bg-black px-8 text-lg font-semibold text-white transition hover:bg-neutral-800 sm:text-xl"
               >
                 Get Started Form
                 <Send size={22} strokeWidth={1.8} />
               </a>
-              <p className="mt-4 text-lg text-neutral-500 sm:text-[1.7rem]">
+              <p className="mt-4 text-sm text-neutral-500 sm:text-base">
                 Comprehensive form for detailed project requirements
               </p>
             </div>
 
             <div>
-              <p className="inline-flex items-center gap-3 text-xl font-semibold text-black sm:text-[2rem]">
+              <p className="inline-flex items-center gap-3 text-lg font-semibold text-black sm:text-[1.35rem]">
                 <MessageCircle size={24} strokeWidth={1.9} />
                 Or Reach Out Directly:
               </p>
-              <div className="mt-6 grid gap-4 text-xl text-black sm:text-[1.95rem]">
+              <div className="mt-6 grid gap-4 text-base text-black sm:text-lg">
                 <a href="mailto:alvinyeboah5@gmail.com" className="inline-flex items-center gap-4 hover:text-neutral-700">
                   <Mail size={24} strokeWidth={1.8} />
                   alvinyeboah5@gmail.com
@@ -332,12 +332,12 @@ export function GetStartedPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl bg-neutral-100 px-6 py-6 text-lg text-neutral-600 sm:px-8 sm:text-[1.65rem]">
+          <div className="mt-10 rounded-2xl bg-neutral-100 px-6 py-6 text-sm text-neutral-600 sm:px-8 sm:text-base">
             Pro Tip: Use the Get Started form for the best results - include your budget range, timeline, and specific features you need!
           </div>
         </section>
 
-        <form id="intro-form" className="mx-auto mt-12 max-w-7xl space-y-10">
+        <form id="intro-form" className="mx-auto mt-12 max-w-6xl space-y-10">
           <FormShell rounded="3xl">
             <div className="grid gap-8 sm:gap-10">
               {introFields.map((field) => (
@@ -362,16 +362,16 @@ export function GetStartedPage() {
           <section className="rounded-[1.8rem] border-[3px] border-black bg-white px-6 py-8 sm:px-8 sm:py-10">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <h2 className="text-3xl font-medium tracking-[-0.04em] text-black sm:text-[3.4rem]">
+                <h2 className="text-2xl font-medium tracking-[-0.04em] text-black sm:text-[2.4rem]">
                   Ready to begin?
                 </h2>
-                <p className="mt-3 text-xl leading-8 text-neutral-600 sm:text-[1.9rem]">
+                <p className="mt-3 text-base leading-7 text-neutral-600 sm:text-lg">
                   Submit your requirements and let&apos;s create something amazing together
                 </p>
               </div>
               <button
                 type="submit"
-                className="inline-flex min-h-[4.8rem] items-center justify-center gap-3 rounded-full bg-black px-9 text-2xl font-semibold text-white transition hover:bg-neutral-800 sm:min-w-[21rem] sm:text-[1.95rem]"
+                className="inline-flex min-h-[4.25rem] items-center justify-center gap-3 rounded-full bg-black px-9 text-lg font-semibold text-white transition hover:bg-neutral-800 sm:min-w-[18rem] sm:text-xl"
               >
                 Submit Requirements
                 <Send size={22} strokeWidth={1.8} />
@@ -413,10 +413,10 @@ function AccordionSection({
             <Icon size={24} strokeWidth={1.9} />
           </span>
           <div className="min-w-0">
-            <h2 className="text-2xl font-medium tracking-[-0.03em] text-black sm:text-[2.2rem]">
+            <h2 className="text-xl font-medium tracking-[-0.03em] text-black sm:text-[1.7rem]">
               {section.title}
             </h2>
-            <p className="mt-1 text-lg text-neutral-500 sm:text-[1.55rem]">{section.subtitle}</p>
+            <p className="mt-1 text-sm text-neutral-500 sm:text-base">{section.subtitle}</p>
           </div>
         </div>
         <span
@@ -513,7 +513,7 @@ function FieldRenderer({ field }: { field: Field }) {
 
     return (
       <fieldset className="grid gap-4">
-        <legend className="text-xl font-semibold tracking-[-0.02em] text-black sm:text-[1.8rem]">
+        <legend className="text-base font-semibold tracking-[-0.02em] text-black sm:text-[1.05rem]">
           {field.label}
         </legend>
         <div className={`grid gap-4 ${columns}`}>
@@ -526,7 +526,7 @@ function FieldRenderer({ field }: { field: Field }) {
                 className="get-started-checkline"
               >
                 <input id={optionId} type="checkbox" className="get-started-checkbox" />
-                <span className="text-lg text-black sm:text-[1.55rem]">{option}</span>
+                <span className="text-base text-black sm:text-[1.05rem]">{option}</span>
               </label>
             );
           })}
@@ -560,7 +560,7 @@ function FieldRenderer({ field }: { field: Field }) {
 
 function FieldLabel({ label, required }: { label: string; required?: boolean }) {
   return (
-    <span className="text-xl font-semibold tracking-[-0.02em] text-black sm:text-[1.8rem]">
+    <span className="text-base font-semibold tracking-[-0.02em] text-black sm:text-[1.05rem]">
       {label}
       {required ? <span className="ml-2 text-red-500">*</span> : null}
     </span>
