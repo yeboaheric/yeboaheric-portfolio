@@ -15,17 +15,17 @@ export function ServicesShowcasePage() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div id="services" className="services-page bg-[#fbfbfa] text-black">
-      <section className="px-5 pb-20 pt-24 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
+    <div id="services" className="services-page">
+      <section className="services-hero">
         <motion.div
-          className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col items-center justify-center text-center"
+          className="services-hero-inner"
           initial={reduceMotion ? false : "hidden"}
           animate={reduceMotion ? undefined : "show"}
           variants={staggerContainer}
         >
           <motion.h1
             variants={fadeUp(0.02, 34)}
-            className="max-w-6xl text-balance text-5xl font-light leading-[0.92] tracking-[-0.06em] text-black sm:text-7xl lg:text-[7.5rem]"
+            className="services-hero-title"
           >
             Professional
             <span className="block">Infrastructure Services</span>
@@ -39,18 +39,18 @@ export function ServicesShowcasePage() {
                 transition: { duration: 0.65, delay: 0.12, ease: softEase },
               },
             }}
-            className="mt-8 h-px w-full max-w-5xl bg-black"
+            className="services-hero-divider"
           />
           <motion.p
             variants={fadeUp(0.16, 22)}
-            className="mt-5 max-w-4xl text-balance text-lg leading-9 text-neutral-600 sm:text-2xl"
+            className="services-hero-copy"
           >
             Reliable, scalable infrastructure solutions designed to power your applications
             with enterprise-grade security and performance.
           </motion.p>
           <motion.div
             variants={fadeUp(0.24, 18)}
-            className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="services-hero-actions"
           >
             <ButtonLink href="#service-01">
               Explore Services
@@ -62,28 +62,28 @@ export function ServicesShowcasePage() {
         </motion.div>
       </section>
 
-      <div className="grid gap-10 px-5 pb-24 sm:px-6 lg:px-8">
+      <div className="services-list">
         {services.map((service, index) => (
           <ServicePanel key={service.title} service={service} index={index} />
         ))}
       </div>
 
-      <section className="border-t border-neutral-200 bg-neutral-50 px-5 py-28 text-center sm:px-6 lg:px-8">
+      <section className="services-custom-cta">
         <motion.div
-          className="mx-auto max-w-4xl"
+          className="services-custom-inner"
           initial={reduceMotion ? false : { opacity: 0, y: 36, filter: "blur(12px)" }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, ease: softEase }}
         >
-          <h2 className="text-balance text-4xl font-light tracking-[-0.05em] text-black sm:text-5xl">
+          <h2>
             Need Something Custom?
           </h2>
-          <p className="mx-auto mt-8 max-w-3xl text-balance text-lg leading-8 text-neutral-600">
+          <p>
             I also provide custom development services, API integrations, and consulting for
             your specific needs. Let&apos;s discuss how I can help scale your business.
           </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="services-custom-actions">
             <ButtonLink href="/get-started">
               Get Custom Quote
             </ButtonLink>
@@ -106,7 +106,7 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
     <motion.section
       id={`service-${service.number}`}
       style={{ "--service-accent": service.accent } as AccentStyle}
-      className="mx-auto grid min-h-[92svh] w-full max-w-7xl items-center gap-12 py-16 lg:grid-cols-2 lg:gap-20"
+      className="service-panel"
       initial={
         reduceMotion
           ? false
@@ -132,46 +132,46 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
       viewport={{ once: true, amount: 0.24 }}
       transition={{ duration: 0.8, ease: softEase }}
     >
-      <div className={visualFirst ? "lg:order-1" : "lg:order-2"}>
+      <div className={`service-visual-column ${visualFirst ? "lg:order-1" : "lg:order-2"}`}>
         <ServiceVisual service={service} />
       </div>
 
       <motion.div
-        className={visualFirst ? "lg:order-2" : "lg:order-1"}
+        className={`service-copy-column ${visualFirst ? "lg:order-2" : "lg:order-1"}`}
         initial={reduceMotion ? false : "hidden"}
         whileInView={reduceMotion ? undefined : "show"}
         viewport={{ once: true, amount: 0.32 }}
         variants={staggerContainer}
       >
-        <motion.div variants={fadeUp(0, 18)} className="flex flex-wrap items-center gap-5">
+        <motion.div variants={fadeUp(0, 18)} className="service-kicker">
           <div
-            className="flex h-24 w-24 items-center justify-center rounded-[1.4rem] text-white shadow-[0_18px_42px_rgba(0,0,0,0.08)]"
+            className="service-icon-block"
             style={{ backgroundColor: service.accent }}
           >
             <Icon aria-hidden="true" size={52} strokeWidth={1.75} />
           </div>
-          <span className="text-lg text-neutral-500">Service {service.number}</span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
+          <span className="service-number">Service {service.number}</span>
+          <span className="service-available">
             <BadgeCheck aria-hidden="true" size={16} strokeWidth={1.75} />
             Available Now
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp(0.04, 24)} className="mt-8">
-          <h2 className="text-balance text-4xl font-light leading-[0.95] tracking-[-0.06em] text-black sm:text-6xl">
+        <motion.div variants={fadeUp(0.04, 24)} className="service-intro">
+          <h2>
             {service.title}
           </h2>
-          <p className="mt-5 text-2xl leading-tight text-neutral-600 sm:text-3xl">
+          <p className="service-subtitle">
             {service.subtitle}
           </p>
-          <p className="mt-8 max-w-4xl text-xl leading-9 text-neutral-600">
+          <p className="service-description">
             {service.description}
           </p>
         </motion.div>
 
-        <motion.div variants={fadeUp(0.08, 20)} className="mt-12">
-          <h3 className="text-2xl font-semibold tracking-[-0.03em]">Key Features</h3>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+        <motion.div variants={fadeUp(0.08, 20)} className="service-features-block">
+          <h3>Key Features</h3>
+          <div className="service-features-grid">
             {service.features.map((feature) => {
               const FeatureIcon = feature.icon;
 
@@ -180,12 +180,12 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
                   key={feature.title}
                   whileHover={reduceMotion ? undefined : { y: -4, scale: 1.01 }}
                   transition={{ duration: 0.28, ease: "easeOut" }}
-                  className="grid grid-cols-[2rem_1fr] gap-5 rounded-[1.25rem] bg-neutral-100/80 p-6"
+                  className="service-feature"
                 >
                   <FeatureIcon aria-hidden="true" size={28} strokeWidth={1.75} className="mt-1 text-neutral-600" />
                   <div>
-                    <h4 className="text-lg font-semibold tracking-[-0.02em] text-black">{feature.title}</h4>
-                    <p className="mt-2 text-base leading-6 text-neutral-600">{feature.description}</p>
+                    <h4>{feature.title}</h4>
+                    <p>{feature.description}</p>
                   </div>
                 </motion.article>
               );
@@ -193,13 +193,13 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
           </div>
         </motion.div>
 
-        <motion.div variants={fadeUp(0.12, 20)} className="mt-12">
-          <h3 className="text-2xl font-semibold tracking-[-0.03em]">Performance Metrics</h3>
-          <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+        <motion.div variants={fadeUp(0.12, 20)} className="service-metrics-block">
+          <h3>Performance Metrics</h3>
+          <div className="service-metrics-grid">
             {service.metrics.map((metric) => (
               <div key={metric.label}>
-                <p className="text-3xl font-light tracking-[-0.04em] text-black sm:text-4xl">{metric.value}</p>
-                <p className="mt-2 text-sm text-neutral-500 sm:text-base">{metric.label}</p>
+                <p className="service-metric-value">{metric.value}</p>
+                <p className="service-metric-label">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -207,22 +207,22 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
 
         <motion.div
           variants={fadeUp(0.16, 24)}
-          className="mt-12 rounded-[1.5rem] bg-neutral-100/80 p-8 sm:p-10"
+          className="service-pricing"
         >
           <div>
-            <p className="text-4xl font-light tracking-[-0.05em] text-black">
+            <p className="service-price">
               {service.price}
-              <span className="text-lg text-neutral-500">/{service.priceSuffix}</span>
+              <span>/{service.priceSuffix}</span>
             </p>
-            <p className="mt-4 text-lg text-neutral-600">{service.included}</p>
+            <p className="service-included">{service.included}</p>
           </div>
 
           {service.plans ? (
-            <div className="mt-8">
-              <h4 className="text-lg font-semibold tracking-[-0.02em]">Available Plans</h4>
-              <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            <div className="service-plans">
+              <h4>Available Plans</h4>
+              <div className="service-plan-grid">
                 {service.plans.map((plan) => (
-                  <div key={plan.name} className="rounded-xl border border-neutral-200 bg-white p-5">
+                  <div key={plan.name} className="service-plan">
                     <p className="font-semibold text-black">{plan.name}</p>
                     <p className="mt-2 text-2xl font-light tracking-[-0.04em]">{plan.price}</p>
                     <p className="mt-2 text-sm leading-5 text-neutral-500">{plan.description}</p>
@@ -232,12 +232,12 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
             </div>
           ) : null}
 
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+          <div className="service-actions">
             <motion.a
               href="/get-started"
               whileHover={reduceMotion ? undefined : { y: -2 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-              className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-7 text-base font-semibold text-white shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
+              className="service-primary-action"
               style={{ backgroundColor: service.accent }}
             >
               Get Started
@@ -247,7 +247,7 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
               href="#services"
               whileHover={reduceMotion ? undefined : { y: -2 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-              className="inline-flex min-h-12 items-center justify-center rounded-full border border-neutral-200 bg-white px-7 text-base font-semibold text-black shadow-[0_8px_22px_rgba(0,0,0,0.05)] transition hover:border-neutral-300"
+              className="reference-outline-button"
             >
               Learn More
             </motion.a>
@@ -271,7 +271,7 @@ function ServiceVisual({ service }: { service: Service }) {
 
   return (
     <motion.div
-      className="relative mx-auto min-h-[34rem] w-full max-w-[42rem]"
+      className="service-visual"
       initial={reduceMotion ? false : { opacity: 0, x: -42, scale: 0.94, filter: "blur(14px)" }}
       whileInView={reduceMotion ? undefined : { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.35 }}
@@ -280,7 +280,7 @@ function ServiceVisual({ service }: { service: Service }) {
       <motion.div
         whileHover={reduceMotion ? undefined : { y: -8, scale: 1.01 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="relative min-h-[34rem] overflow-visible rounded-[1.5rem] border border-neutral-200 bg-neutral-50 shadow-[0_32px_70px_rgba(0,0,0,0.12)]"
+        className="service-visual-surface"
       >
         <span className="absolute left-6 top-6 z-10 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white">
           Available Now

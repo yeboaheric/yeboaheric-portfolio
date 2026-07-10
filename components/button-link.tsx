@@ -18,15 +18,15 @@ export function ButtonLink({
   const reduceMotion = useReducedMotion();
   const className =
     variant === "primary"
-      ? "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 focus-ring"
-      : "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-6 text-sm font-semibold text-black transition hover:border-black focus-ring";
+      ? "reference-button group focus-ring"
+      : "reference-outline-button group focus-ring";
 
   return (
     <motion.div
       whileHover={reduceMotion ? undefined : { y: -2 }}
       whileTap={reduceMotion ? undefined : { scale: 0.985 }}
       transition={{ duration: 0.22 }}
-      className="w-full sm:w-auto"
+      className="button-link-wrap"
     >
       <Link href={href} className={className}>
       {children}

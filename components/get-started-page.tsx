@@ -241,12 +241,12 @@ export function GetStartedPage() {
   const [openSection, setOpenSection] = useState(requirementsSections[0].id);
 
   return (
-    <div className="get-started-page bg-white text-black">
-      <main className="mx-auto max-w-7xl px-5 pb-24 pt-8 sm:px-6 lg:px-8">
-        <section className="mx-auto max-w-7xl pb-14 pt-4">
-          <div className="inline-flex items-center gap-3 text-xl font-semibold uppercase tracking-[0.04em] text-black sm:text-2xl">
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white">
-              <Code2 size={34} strokeWidth={2.2} />
+    <div className="get-started-page">
+      <main className="requirements-main">
+        <section className="requirements-hero">
+          <div className="requirements-kicker">
+            <span>
+              <Code2 size={26} strokeWidth={1.75} />
             </span>
             <span>LET&apos;S CREATE MAGIC</span>
           </div>
@@ -255,72 +255,72 @@ export function GetStartedPage() {
             initial={reduceMotion ? false : { opacity: 0, y: 28, filter: "blur(8px)" }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, ease: softEase }}
-            className="mt-10 max-w-5xl text-balance text-[4rem] font-light leading-[0.9] tracking-[-0.07em] text-black sm:text-[5.2rem] lg:text-[6.6rem]"
+            className="requirements-title"
           >
             Your Dream Website
-            <span className="block font-medium">Starts Here</span>
+            <span className="block">Starts Here</span>
           </motion.h1>
 
-          <p className="mt-10 max-w-5xl text-balance text-2xl leading-[1.45] text-neutral-600 sm:text-[1.9rem]">
+          <p className="requirements-intro">
             Every great website begins with a vision. I&apos;m here to transform your ideas into a
             stunning digital reality. Fill out this comprehensive form, and I&apos;ll craft a website that
             not only looks beautiful but delivers results.
           </p>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="requirements-benefits">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex items-start gap-5">
-                <span className="inline-flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-full bg-black text-white">
-                  <Check size={34} strokeWidth={2.2} />
+              <div key={benefit.title} className="requirements-benefit">
+                <span>
+                  <Check size={18} strokeWidth={1.75} />
                 </span>
                 <div>
-                  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-black sm:text-[2.2rem]">
+                  <h2>
                     {benefit.title}
                   </h2>
-                  <p className="mt-2 text-xl text-neutral-600 sm:text-[1.9rem]">{benefit.description}</p>
+                  <p>{benefit.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.04)] sm:p-10 lg:p-14">
-          <h2 className="text-3xl font-semibold tracking-[-0.04em] text-black sm:text-[3rem]">
+        <section className="requirements-quick">
+          <h2>
             Quick Questions? Direct Message
           </h2>
-          <p className="mt-6 max-w-4xl text-xl leading-[1.55] text-neutral-600 sm:text-[1.95rem]">
+          <p className="requirements-quick-copy">
             Not sure about something? Have specific requirements? You can use our comprehensive form or reach out directly:
           </p>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+          <div className="requirements-quick-grid">
             <div>
-              <p className="inline-flex items-center gap-3 text-xl font-semibold text-black sm:text-[2rem]">
+              <p className="requirements-quick-label">
                 <FolderOpen size={24} strokeWidth={1.9} />
                 Fill Out Full Requirements
               </p>
               <a
                 href="#intro-form"
-                className="mt-5 inline-flex min-h-[4.8rem] w-full items-center justify-center gap-3 rounded-full bg-black px-8 text-2xl font-semibold text-white transition hover:bg-neutral-800 sm:text-[2rem]"
+                className="requirements-quick-button"
               >
                 Get Started Form
                 <Send size={22} strokeWidth={1.8} />
               </a>
-              <p className="mt-4 text-lg text-neutral-500 sm:text-[1.7rem]">
+              <p className="requirements-quick-note">
                 Comprehensive form for detailed project requirements
               </p>
             </div>
 
             <div>
-              <p className="inline-flex items-center gap-3 text-xl font-semibold text-black sm:text-[2rem]">
+              <p className="requirements-quick-label">
                 <MessageCircle size={24} strokeWidth={1.9} />
                 Or Reach Out Directly:
               </p>
-              <div className="mt-6 grid gap-4 text-xl text-black sm:text-[1.95rem]">
-                <a href="mailto:alvinyeboah5@gmail.com" className="inline-flex items-center gap-4 hover:text-neutral-700">
+              <div className="requirements-direct-links">
+                <a href="mailto:oseiyeboaheric@outlook.com" className="inline-flex items-center gap-4 hover:text-neutral-700">
                   <Mail size={24} strokeWidth={1.8} />
-                  alvinyeboah5@gmail.com
+                  oseiyeboaheric@outlook.com
                 </a>
-                <a href="https://wa.me/233241234567" className="inline-flex items-center gap-4 hover:text-neutral-700">
+                <a href="https://wa.me/233558611019" className="inline-flex items-center gap-4 hover:text-neutral-700">
                   <MessageCircle size={24} strokeWidth={1.8} />
                   WhatsApp Chat
                 </a>
@@ -332,21 +332,21 @@ export function GetStartedPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl bg-neutral-100 px-6 py-6 text-lg text-neutral-600 sm:px-8 sm:text-[1.65rem]">
+          <div className="requirements-pro-tip">
             Pro Tip: Use the Get Started form for the best results - include your budget range, timeline, and specific features you need!
           </div>
         </section>
 
-        <form id="intro-form" className="mx-auto mt-12 max-w-7xl space-y-10">
+        <form id="intro-form" className="requirements-form">
           <FormShell rounded="3xl">
-            <div className="grid gap-8 sm:gap-10">
+            <div className="requirements-field-stack">
               {introFields.map((field) => (
                 <FieldRenderer key={field.label} field={field} />
               ))}
             </div>
           </FormShell>
 
-          <div className="space-y-8">
+          <div className="requirements-accordion-list">
             {requirementsSections.map((section) => (
               <AccordionSection
                 key={section.id}
@@ -359,19 +359,19 @@ export function GetStartedPage() {
             ))}
           </div>
 
-          <section className="rounded-[1.8rem] border-[3px] border-black bg-white px-6 py-8 sm:px-8 sm:py-10">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <section className="requirements-submit-panel">
+            <div>
               <div>
-                <h2 className="text-3xl font-medium tracking-[-0.04em] text-black sm:text-[3.4rem]">
+                <h2>
                   Ready to begin?
                 </h2>
-                <p className="mt-3 text-xl leading-8 text-neutral-600 sm:text-[1.9rem]">
+                <p>
                   Submit your requirements and let&apos;s create something amazing together
                 </p>
               </div>
               <button
                 type="submit"
-                className="inline-flex min-h-[4.8rem] items-center justify-center gap-3 rounded-full bg-black px-9 text-2xl font-semibold text-white transition hover:bg-neutral-800 sm:min-w-[21rem] sm:text-[1.95rem]"
+                className="requirements-submit-button"
               >
                 Submit Requirements
                 <Send size={22} strokeWidth={1.8} />
@@ -397,30 +397,30 @@ function AccordionSection({
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="overflow-hidden rounded-[1.7rem] border border-black/90 bg-white">
+    <section className={`requirements-accordion ${open ? "is-open" : ""}`}>
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left sm:px-8 sm:py-7"
+        className="requirements-accordion-trigger"
         aria-expanded={open}
       >
-        <div className="flex min-w-0 items-center gap-5">
+        <div className="requirements-accordion-heading">
           <span
-            className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${
+            className={`requirements-accordion-icon ${
               open ? "bg-black text-white" : "bg-neutral-100 text-black"
             }`}
           >
             <Icon size={24} strokeWidth={1.9} />
           </span>
           <div className="min-w-0">
-            <h2 className="text-2xl font-medium tracking-[-0.03em] text-black sm:text-[2.2rem]">
+            <h2>
               {section.title}
             </h2>
-            <p className="mt-1 text-lg text-neutral-500 sm:text-[1.55rem]">{section.subtitle}</p>
+            <p>{section.subtitle}</p>
           </div>
         </div>
         <span
-          className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
+          className={`requirements-accordion-toggle ${
             open ? "bg-black text-white" : "bg-neutral-100 text-black"
           }`}
         >
@@ -435,10 +435,10 @@ function AccordionSection({
             animate={reduceMotion ? undefined : { height: "auto", opacity: 1 }}
             exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
             transition={{ duration: 0.32, ease: softEase }}
-            className="overflow-hidden border-t border-neutral-200"
+            className="requirements-accordion-content"
           >
-            <div className="p-6 sm:p-8">
-              <div className="grid gap-8">
+            <div className="requirements-accordion-body">
+              <div className="requirements-field-stack">
                 {section.fields.map((field) => (
                   <FieldRenderer key={`${section.id}-${field.label}`} field={field} />
                 ))}
@@ -459,7 +459,7 @@ function FormShell({
   rounded: "3xl";
 }) {
   return (
-    <section className={`rounded-[2.2rem] border border-black/90 bg-white p-6 sm:p-8 lg:p-12`}>
+    <section className="requirements-form-shell">
       {children}
     </section>
   );
@@ -513,7 +513,7 @@ function FieldRenderer({ field }: { field: Field }) {
 
     return (
       <fieldset className="grid gap-4">
-        <legend className="text-xl font-semibold tracking-[-0.02em] text-black sm:text-[1.8rem]">
+        <legend className="requirements-field-label">
           {field.label}
         </legend>
         <div className={`grid gap-4 ${columns}`}>
@@ -526,7 +526,7 @@ function FieldRenderer({ field }: { field: Field }) {
                 className="get-started-checkline"
               >
                 <input id={optionId} type="checkbox" className="get-started-checkbox" />
-                <span className="text-lg text-black sm:text-[1.55rem]">{option}</span>
+                <span>{option}</span>
               </label>
             );
           })}
@@ -560,7 +560,7 @@ function FieldRenderer({ field }: { field: Field }) {
 
 function FieldLabel({ label, required }: { label: string; required?: boolean }) {
   return (
-    <span className="text-xl font-semibold tracking-[-0.02em] text-black sm:text-[1.8rem]">
+    <span className="requirements-field-label">
       {label}
       {required ? <span className="ml-2 text-red-500">*</span> : null}
     </span>

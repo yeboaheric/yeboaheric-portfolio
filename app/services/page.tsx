@@ -19,7 +19,7 @@ const servicesPageNavigation: NavItem[] = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#fbfbfa] text-black">
+    <div className="site-page services-route">
       <Header
         navigationItems={servicesPageNavigation}
         brandHref="/"

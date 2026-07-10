@@ -13,28 +13,28 @@ export function Timeline({ title, items }: TimelineProps) {
   const Icon = timelineLabels[title as keyof typeof timelineLabels];
 
   return (
-    <section>
-      <h3 className="mb-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+    <section className="timeline-section">
+      <h3 className="timeline-heading">
         {Icon ? <Icon aria-hidden="true" size={17} strokeWidth={1.75} /> : null}
         {title}
       </h3>
-      <div className="space-y-4">
+      <div className="timeline-list">
         {items.map((item) => (
-          <article key={`${item.title}-${item.date}`} className="relative pl-7">
-            <span className="timeline-track absolute left-0 top-2 h-full w-px bg-neutral-200" aria-hidden="true" />
-            <span className="timeline-dot absolute left-[-4px] top-2 h-2.5 w-2.5 rounded-full bg-black" aria-hidden="true" />
-            <div className="rounded-3xl border border-neutral-200 p-5">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-neutral-500">
+          <article key={`${item.title}-${item.date}`} className="timeline-item">
+            <span className="timeline-track" aria-hidden="true" />
+            <span className="timeline-dot" aria-hidden="true" />
+            <div className="timeline-content">
+              <p className="timeline-date">
                 {item.date}
               </p>
-              <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <h4 className="text-base font-semibold text-black">{item.title}</h4>
-                <p className="text-sm text-neutral-500">{item.place}</p>
+              <div>
+                <h4 className="timeline-title">{item.title}</h4>
+                <p className="timeline-place">{item.place}</p>
               </div>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">{item.description}</p>
+              <p className="timeline-description">{item.description}</p>
               <a
                 href="#contact"
-                className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-black underline underline-offset-4 transition hover:text-neutral-600"
+                className="timeline-link group"
               >
                 Show details
                 <span className="inline-flex transition duration-200 group-hover:translate-x-0.5">

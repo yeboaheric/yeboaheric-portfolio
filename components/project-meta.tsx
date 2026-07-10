@@ -15,7 +15,7 @@ export function ProjectMeta({ project }: ProjectMetaProps) {
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-500">
+    <div className="project-meta">
       {items.map((item) => {
         const Icon = item.icon;
 

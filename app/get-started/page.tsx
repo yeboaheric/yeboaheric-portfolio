@@ -19,7 +19,7 @@ const getStartedNavigation: NavItem[] = [
 
 export default function GetStartedRoute() {
   return (
-    <div className="bg-white text-black">
+    <div className="site-page get-started-route">
       <Header
         navigationItems={getStartedNavigation}
         brandHref="/"

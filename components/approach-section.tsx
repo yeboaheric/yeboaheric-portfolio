@@ -52,11 +52,11 @@ export function ApproachSection({ compact = false }: ApproachSectionProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div>
-      <h3 className={compact ? "text-2xl font-semibold tracking-[-0.04em] text-black sm:text-3xl" : "text-3xl font-semibold tracking-[-0.04em] text-black sm:text-4xl"}>
+    <div className={compact ? "approach-section is-compact" : "approach-section"}>
+      <h3 className="approach-title">
         My approach
       </h3>
-      <div className={compact ? "approach-grid-compact mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2" : "mt-10 grid grid-cols-1 gap-8 lg:grid-cols-4"}>
+      <div className={compact ? "approach-grid approach-grid-compact" : "approach-grid"}>
         {approaches.map((approach, index) => {
           const Icon = approach.icon;
           const isActive = activeIndex === index;
@@ -72,26 +72,26 @@ export function ApproachSection({ compact = false }: ApproachSectionProps) {
               onBlur={() => setActiveIndex((current) => (current === index ? null : current))}
               className={
                 compact
-                  ? "group rounded-[1.25rem] border border-neutral-200 bg-white p-4 text-left transition-colors duration-300 hover:bg-neutral-50/60 focus-within:bg-neutral-50/60"
-                  : "group rounded-[1.75rem] border border-transparent px-0 py-4 text-left transition-colors duration-300 hover:border-neutral-200 hover:bg-neutral-50/60 hover:px-5 focus-within:border-neutral-200 focus-within:bg-neutral-50/60 focus-within:px-5"
+                  ? "approach-item group"
+                  : "approach-item group"
               }
               whileHover={reduceMotion ? undefined : { y: -3 }}
               transition={{ duration: 0.25 }}
               tabIndex={0}
             >
-              <div className="flex items-start justify-between gap-6">
-                <span className="text-6xl font-light leading-none tracking-[-0.08em] text-neutral-300 sm:text-7xl">
+              <div className="approach-topline">
+                <span className="approach-step">
                   {step}
                 </span>
                 <motion.div
                   animate={reduceMotion ? undefined : { rotate: isActive ? 360 : 0 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-white text-neutral-500"
+                  className="approach-icon"
                 >
-                  <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+                  <Icon aria-hidden="true" size={18} strokeWidth={1.5} />
                 </motion.div>
               </div>
-              <h4 className="mt-8 text-[2rem] font-semibold tracking-[-0.05em] text-black">
+              <h4 className="approach-item-title">
                 {approach.title}
               </h4>
 
@@ -105,8 +105,8 @@ export function ApproachSection({ compact = false }: ApproachSectionProps) {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-5 border-t border-neutral-200 pt-4">
-                      <p className="max-w-[22rem] text-base leading-8 text-neutral-600">
+                    <div className="approach-meaning">
+                      <p>
                         {approach.meaning}
                       </p>
                     </div>

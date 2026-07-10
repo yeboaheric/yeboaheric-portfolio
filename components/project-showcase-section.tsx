@@ -40,12 +40,20 @@ export function ProjectShowcaseSection({
   const contentX = useTransform(
     scrollYProgress,
     [0, 0.28, 0.5, 0.72, 1],
-    reduceMotion ? [0, 0, 0, 0, 0] : [-140, -44, 0, 24, 72]
+    reduceMotion
+      ? [0, 0, 0, 0, 0]
+      : index === 0
+        ? [0, 0, 0, 24, 72]
+        : [-140, -44, 0, 24, 72]
   );
   const contentOpacity = useTransform(
     scrollYProgress,
     [0, 0.2, 0.5, 0.8, 1],
-    reduceMotion ? [1, 1, 1, 1, 1] : [0.12, 0.5, 1, 0.72, 0.22]
+    reduceMotion
+      ? [1, 1, 1, 1, 1]
+      : index === 0
+        ? [1, 1, 1, 0.72, 0.22]
+        : [0.12, 0.5, 1, 0.72, 0.22]
   );
   const contentScale = useTransform(
     scrollYProgress,
@@ -55,12 +63,20 @@ export function ProjectShowcaseSection({
   const mockupX = useTransform(
     scrollYProgress,
     [0, 0.28, 0.5, 0.72, 1],
-    reduceMotion ? [0, 0, 0, 0, 0] : [-110, -28, 0, 16, 54]
+    reduceMotion
+      ? [0, 0, 0, 0, 0]
+      : index === 0
+        ? [0, 0, 0, 16, 54]
+        : [-110, -28, 0, 16, 54]
   );
   const mockupOpacity = useTransform(
     scrollYProgress,
     [0, 0.2, 0.5, 0.8, 1],
-    reduceMotion ? [1, 1, 1, 1, 1] : [0.1, 0.45, 1, 0.84, 0.3]
+    reduceMotion
+      ? [1, 1, 1, 1, 1]
+      : index === 0
+        ? [1, 1, 1, 0.84, 0.3]
+        : [0.1, 0.45, 1, 0.84, 0.3]
   );
   const mockupScale = useTransform(
     scrollYProgress,
@@ -73,58 +89,58 @@ export function ProjectShowcaseSection({
       ref={setRefs}
       id={`project-${slugify(project.title)}`}
       data-project-panel
-      className="relative min-h-[180svh] lg:min-h-[210svh]"
+      className="project-showcase-panel"
     >
-      <div className="sticky top-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-10">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,0.92fr)] lg:gap-16">
+      <div className="project-showcase-sticky">
+        <div className="project-showcase-layout">
           <motion.div
             style={{ x: contentX, opacity: contentOpacity, scale: contentScale }}
             transition={{ duration: 0.4, ease: softEase }}
-            className="max-w-3xl"
+            className="project-showcase-copy"
           >
             <ProjectMeta project={project} />
 
-            <h1 className="mt-6 text-balance text-[clamp(3.2rem,7vw,6.6rem)] font-medium uppercase leading-[0.9] tracking-[-0.07em] text-black">
+            <h1 className="project-showcase-title">
               {project.title}
             </h1>
 
-            <p className="mt-4 text-2xl font-medium tracking-[-0.03em] text-neutral-500 sm:text-3xl">
+            <p className="project-showcase-category">
               {project.category}
             </p>
 
-            <p className="mt-7 max-w-2xl text-balance text-lg leading-[1.6] text-neutral-700 sm:text-xl">
+            <p className="project-showcase-description">
               {project.description}
             </p>
 
-            <div className="mt-10">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <div className="project-showcase-block">
+              <p className="project-showcase-label">
                 Technologies
               </p>
               <TechPills items={project.techStack} />
             </div>
 
-            <div className="mt-12">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <div className="project-showcase-block">
+              <p className="project-showcase-label">
                 Key Features
               </p>
               <FeatureGrid items={project.features} />
             </div>
 
-            <div className="mt-12">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <div className="project-showcase-block">
+              <p className="project-showcase-label">
                 Impact
               </p>
               <ImpactStats items={project.impact} />
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-4">
+            <div className="project-showcase-actions">
               <motion.a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
                 whileHover={reduceMotion ? undefined : { y: -2 }}
                 whileTap={reduceMotion ? undefined : { scale: 0.985 }}
-                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition hover:bg-neutral-800"
+                className="reference-button"
               >
                 View Live Site
                 <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.75} />
@@ -137,7 +153,7 @@ export function ProjectShowcaseSection({
                   rel="noreferrer"
                   whileHover={reduceMotion ? undefined : { y: -2 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.985 }}
-                  className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-6 text-sm font-semibold text-black shadow-[0_12px_28px_rgba(0,0,0,0.03)] transition hover:border-black"
+                  className="reference-outline-button"
                 >
                   <Code2 aria-hidden="true" size={16} strokeWidth={1.75} />
                   View Code
@@ -149,17 +165,17 @@ export function ProjectShowcaseSection({
           <motion.div
             style={{ x: mockupX, opacity: mockupOpacity, scale: mockupScale }}
             transition={{ duration: 0.4, ease: softEase }}
-            className="relative lg:pl-4"
+            className="project-showcase-visual"
           >
-            <div className="pointer-events-none absolute right-0 top-6 z-10 rounded-[2rem] border border-neutral-200 bg-white px-7 py-5 text-3xl font-medium tracking-[-0.04em] text-black shadow-[0_14px_34px_rgba(0,0,0,0.05)]">
+            <div className="project-year-badge">
               {project.year}
             </div>
 
-            <div className="pointer-events-none absolute bottom-6 left-0 z-10 rounded-[1.4rem] border border-neutral-200 bg-white px-6 py-4 text-lg font-semibold tracking-[-0.03em] text-black shadow-[0_14px_34px_rgba(0,0,0,0.05)]">
+            <div className="project-role-badge">
               {project.role}
             </div>
 
-            <div className="mx-auto w-full max-w-[48rem] pr-2 sm:pr-8 lg:pr-0">
+            <div className="project-laptop-wrap">
               <MacbookMockup
                 src={project.screenshot}
                 alt={`${project.title} screenshot`}

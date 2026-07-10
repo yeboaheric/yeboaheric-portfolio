@@ -13,25 +13,21 @@ export function Footer({ navigationItems = navigation }: FooterProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <footer className="bg-black px-5 py-12 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+    <footer className="site-footer">
+      <div className="site-footer-inner">
         <div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-xs font-bold tracking-[0.16em]">
-            YOE
-          </div>
-          <p className="mt-6 max-w-sm text-sm leading-7 text-neutral-400">
+          <div className="site-footer-logo">Yeboah Eric</div>
+          <p className="site-footer-summary">
             Eric Yeboah crafts minimal digital experiences from Accra for clients and collaborators worldwide.
           </p>
-          <p className="mt-8 text-sm text-neutral-500">© 2025 YOE. All rights reserved.</p>
+          <p className="site-footer-copy">© 2025 Yeboah Eric. All rights reserved.</p>
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
-            Navigation
-          </h2>
-          <div className="mt-5 grid gap-3">
+          <h2 className="site-footer-heading">Navigation</h2>
+          <div className="site-footer-list">
             {navigationItems.map((item) => (
-              <Link key={item.href} href={item.href} className="text-sm text-neutral-300 hover:text-white">
+              <Link key={item.href} href={item.href}>
                 {item.label}
               </Link>
             ))}
@@ -39,26 +35,24 @@ export function Footer({ navigationItems = navigation }: FooterProps) {
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
-            Contact
-          </h2>
-          <div className="mt-5 grid gap-3 text-sm text-neutral-300">
-            <a href="mailto:oseiyeboaheric@outlook.com" className="inline-flex items-center gap-2 hover:text-white">
+          <h2 className="site-footer-heading">Contact</h2>
+          <div className="site-footer-list">
+            <a href="mailto:oseiyeboaheric@outlook.com" className="site-footer-contact">
               <Mail aria-hidden="true" size={16} strokeWidth={1.75} />
               oseiyeboaheric@outlook.com
             </a>
-            <p className="inline-flex items-center gap-2">
+            <p className="site-footer-contact">
               <MapPin aria-hidden="true" size={16} strokeWidth={1.75} />
               Accra, Ghana
             </p>
           </div>
-          <div className="mt-6 flex gap-3">
+          <div className="site-footer-socials">
             <motion.a
               href="https://github.com/yeboaheric"
               target="_blank"
               rel="noreferrer"
               whileHover={reduceMotion ? undefined : { y: -2 }}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black"
+              className="site-footer-social"
               aria-label="GitHub"
             >
               <Code2 aria-hidden="true" size={17} strokeWidth={1.75} />
@@ -68,7 +62,7 @@ export function Footer({ navigationItems = navigation }: FooterProps) {
               target="_blank"
               rel="noreferrer"
               whileHover={reduceMotion ? undefined : { y: -2 }}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black"
+              className="site-footer-social"
               aria-label="LinkedIn"
             >
               <BadgeCheck aria-hidden="true" size={17} strokeWidth={1.75} />

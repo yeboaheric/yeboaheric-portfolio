@@ -19,13 +19,13 @@ const projectsPageNavigation: NavItem[] = [
 
 export default function ProjectsPage() {
   return (
-    <div className="bg-[#fcfbf7] text-black">
+    <div className="site-page projects-route">
       <Header
         navigationItems={projectsPageNavigation}
         brandHref="/"
         activeOverride="/projects"
       />
-      <main className="bg-[#fcfbf7]">
+      <main>
         <ProjectsShowcasePage />
       </main>
       <Footer navigationItems={projectsPageNavigation} />

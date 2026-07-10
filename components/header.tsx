@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { fadeUp, softEase, staggerContainer, viewportOnce } from "@/components/motion-tokens";
+import { softEase } from "@/components/motion-tokens";
 import { navigation, type NavItem } from "@/data/portfolio";
 
 type HeaderProps = {
@@ -25,6 +25,46 @@ export function Header({
   const [isScrolled, setIsScrolled] = useState(false);
   const reduceMotion = useReducedMotion();
   const pathname = usePathname();
+  const compactHeight = 60;
+  const expandedHeight =
+    compactHeight +
+    16 +
+    navigationItems.length * 36 +
+    Math.max(navigationItems.length - 1, 0) * 10 +
+    20;
+  const menuEase: [number, number, number, number] = [0.4, 0, 0.2, 1];
+
+  const menuListVariants = {
+    closed: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.035,
+        staggerDirection: -1,
+      },
+    },
+    open: {
+      transition: {
+        delayChildren: reduceMotion ? 0 : 0.14,
+        staggerChildren: reduceMotion ? 0 : 0.065,
+      },
+    },
+  };
+
+  const menuItemVariants = {
+    closed: {
+      opacity: 0,
+      y: 8,
+      scale: 0.98,
+      filter: "blur(4px)",
+      transition: { duration: reduceMotion ? 0 : 0.16, ease: menuEase },
+    },
+    open: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { duration: reduceMotion ? 0 : 0.28, ease: menuEase },
+    },
+  };
 
   useEffect(() => {
     const sectionIds = navigationItems
@@ -84,6 +124,10 @@ export function Header({
     window.localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const currentActiveHref = activeOverride ?? activeHref;
   const isItemActive = (href: string) =>
     href === currentActiveHref || (!href.startsWith("#") && pathname === href);
@@ -93,107 +137,176 @@ export function Header({
       initial={reduceMotion ? false : { opacity: 0, y: -24, filter: "blur(10px)" }}
       animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.55, ease: softEase }}
-      className={`sticky top-0 z-50 bg-white/95 backdrop-blur transition-all duration-300 ${
-        isScrolled
-          ? "border-b border-neutral-200/95 shadow-[0_8px_30px_rgba(0,0,0,0.03)]"
-          : "border-b border-transparent"
-      }`}
+      className={`site-header ${isScrolled ? "is-scrolled" : ""}`}
     >
-      <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8 ${
-          isScrolled ? "py-3" : "py-4"
-        } transition-all duration-300`}
+      <motion.div
+        className={`site-header-inner ${isOpen ? "is-open" : ""}`}
+        initial={false}
+        animate={{
+          height: isOpen ? expandedHeight : compactHeight,
+          borderRadius: isOpen ? "1.5rem" : "1.25rem",
+        }}
+        transition={{
+          duration: reduceMotion ? 0 : 0.4,
+          ease: menuEase,
+          delay: reduceMotion ? 0 : isOpen ? 0 : 0.08,
+        }}
       >
-        <Link
-          href={brandHref}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-black text-xs font-bold tracking-[0.16em] text-black"
-          aria-label="Eric Yeboah home"
-        >
-          YOE
-        </Link>
+        <nav className="site-header-bar" aria-label="Primary navigation">
+          <Link href={brandHref} className="site-logo" aria-label="Yeboah Eric home">
+            Yeboah Eric
+          </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                isItemActive(item.href)
-                  ? "bg-black text-white"
-                  : "text-neutral-500 hover:bg-neutral-100 hover:text-black"
-              }`}
+          <div className="site-header-controls">
+            <button
+              type="button"
+              className="site-theme-toggle focus-ring"
+              aria-label={theme === "dark" ? "Switch theme to light mode" : "Switch theme to dark mode"}
+              onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
             >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+              {theme === "dark" ? (
+                <Sun aria-hidden="true" size={16} strokeWidth={1.75} />
+              ) : (
+                <Moon aria-hidden="true" size={16} strokeWidth={1.75} />
+              )}
+            </button>
 
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-black transition hover:border-black hover:bg-neutral-100 focus-ring"
-            aria-label={theme === "dark" ? "Switch theme to light mode" : "Switch theme to dark mode"}
-            onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-          >
-            {theme === "dark" ? (
-              <Sun aria-hidden="true" size={17} strokeWidth={1.75} />
-            ) : (
-              <Moon aria-hidden="true" size={17} strokeWidth={1.75} />
-            )}
-          </button>
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-black transition hover:border-black hover:bg-neutral-100 focus-ring md:hidden"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setIsOpen((current) => !current)}
-          >
-            {isOpen ? (
-              <X aria-hidden="true" size={18} strokeWidth={1.75} />
-            ) : (
-              <Menu aria-hidden="true" size={18} strokeWidth={1.75} />
-            )}
-          </button>
-        </div>
-      </nav>
+            <button
+              type="button"
+              className="site-header-menu-toggle focus-ring"
+              aria-expanded={isOpen}
+              aria-controls="header-navigation"
+              aria-label={isOpen ? "Close navigation" : "Open navigation"}
+              onClick={() => setIsOpen((current) => !current)}
+            >
+              <motion.span className="site-header-menu-mark" aria-hidden="true" initial={false}>
+                <motion.span
+                  className="site-header-menu-dot site-header-menu-dot-start"
+                  animate={
+                    isOpen
+                      ? {
+                          x: 0,
+                          y: 0,
+                          width: "1rem",
+                          height: "2px",
+                          borderRadius: "999px",
+                          rotate: 45,
+                          opacity: 1,
+                        }
+                      : {
+                          x: "-0.5rem",
+                          y: 0,
+                          width: "0.28rem",
+                          height: "0.28rem",
+                          borderRadius: "999px",
+                          rotate: 0,
+                          opacity: 1,
+                        }
+                  }
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.38,
+                    ease: menuEase,
+                    delay: reduceMotion ? 0 : isOpen ? 0.02 : 0,
+                  }}
+                />
+                <motion.span
+                  className="site-header-menu-dot site-header-menu-dot-middle"
+                  animate={
+                    isOpen
+                      ? {
+                          x: 0,
+                          y: "0.56rem",
+                          opacity: 0,
+                          scale: 0.55,
+                        }
+                      : {
+                          x: 0,
+                          y: 0,
+                          opacity: 1,
+                          scale: 1,
+                        }
+                  }
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.36,
+                    ease: menuEase,
+                    delay: reduceMotion ? 0 : isOpen ? 0.05 : 0.06,
+                  }}
+                />
+                <motion.span
+                  className="site-header-menu-dot site-header-menu-dot-end"
+                  animate={
+                    isOpen
+                      ? {
+                          x: 0,
+                          y: 0,
+                          width: "1rem",
+                          height: "2px",
+                          borderRadius: "999px",
+                          rotate: -45,
+                          opacity: 1,
+                        }
+                      : {
+                          x: "0.5rem",
+                          y: 0,
+                          width: "0.28rem",
+                          height: "0.28rem",
+                          borderRadius: "999px",
+                          rotate: 0,
+                          opacity: 1,
+                        }
+                  }
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.38,
+                    ease: menuEase,
+                    delay: reduceMotion ? 0 : isOpen ? 0.02 : 0,
+                  }}
+                />
+              </motion.span>
+            </button>
+          </div>
+        </nav>
 
-      <AnimatePresence initial={false}>
-        {isOpen ? (
-          <motion.div
-            id="mobile-navigation"
-            initial={reduceMotion ? false : { opacity: 0, y: -12 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.28, ease: softEase }}
-            className="border-t border-neutral-200 bg-white px-5 py-4 md:hidden"
-          >
+        <AnimatePresence initial={false}>
+          {isOpen ? (
             <motion.div
-              className="mx-auto grid max-w-7xl gap-2"
-              variants={staggerContainer}
-              initial={reduceMotion ? false : "hidden"}
-              animate={reduceMotion ? undefined : "show"}
-              viewport={viewportOnce}
+              id="header-navigation"
+              className="site-header-panel"
+              initial={reduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0 }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.18,
+                ease: menuEase,
+                delay: reduceMotion ? 0 : 0.1,
+              }}
             >
-              {navigationItems.map((item) => (
-                <motion.div key={item.href} variants={fadeUp(0, 12)}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`rounded-2xl px-4 py-3 text-sm font-medium transition ${
-                      isItemActive(item.href)
-                        ? "bg-black text-white"
-                        : "text-neutral-600 hover:bg-neutral-100 hover:text-black"
-                    }`}
+              <motion.nav
+                className="site-header-menu-links"
+                aria-label="Expanded navigation"
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={menuListVariants}
+              >
+                {navigationItems.map((item) => (
+                  <motion.div
+                    key={item.href}
+                    variants={menuItemVariants}
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={`site-header-menu-link ${isItemActive(item.href) ? "is-active" : ""}`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.nav>
             </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+          ) : null}
+        </AnimatePresence>
+      </motion.div>
     </motion.header>
   );
 }
