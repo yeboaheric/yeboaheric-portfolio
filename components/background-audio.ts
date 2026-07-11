@@ -10,15 +10,10 @@ const TRACK_SRC = "/audio/samuelfjohanns-minimal-109310.mp3";
 const TARGET_VOLUME = 0.25;
 const USER_ENABLED_KEY = "portfolio-music-enabled";
 const SESSION_UNLOCKED_KEY = "portfolio-music-unlocked";
-const LOOP_FADE_MS = 1100;
-const LOOP_FADE_SECONDS = 1.15;
-
 let audio: HTMLAudioElement | null = null;
 let fadeFrame: number | null = null;
 let listeners = new Set<Listener>();
 let isPlaying = false;
-let isLoopRestarting = false;
-let loopFadeStarted = false;
 
 const emit = () => {
   const state = { isPlaying };
@@ -67,49 +62,6 @@ const fadeAudioTo = (targetVolume: number, duration: number, onComplete?: () => 
   fadeFrame = window.requestAnimationFrame(step);
 };
 
-const restartLoop = async () => {
-  const instance = getBackgroundAudioElement();
-  if (!instance) return;
-
-  isLoopRestarting = true;
-  loopFadeStarted = false;
-  instance.currentTime = 0;
-  instance.volume = 0;
-
-  try {
-    await instance.play();
-    isPlaying = true;
-    emit();
-    fadeAudioTo(TARGET_VOLUME, LOOP_FADE_MS, () => {
-      isLoopRestarting = false;
-    });
-  } catch {
-    isLoopRestarting = false;
-    isPlaying = false;
-    emit();
-  }
-};
-
-const handleTimeUpdate = () => {
-  const instance = audio;
-  if (!instance || isLoopRestarting || loopFadeStarted) return;
-  if (!instance.duration || !Number.isFinite(instance.duration)) return;
-  if (instance.duration - instance.currentTime > LOOP_FADE_SECONDS) return;
-
-  loopFadeStarted = true;
-  fadeAudioTo(0, LOOP_FADE_MS);
-};
-
-const handleEnded = () => {
-  if (!isEnabled() || !isUnlocked()) {
-    isPlaying = false;
-    emit();
-    return;
-  }
-
-  void restartLoop();
-};
-
 const attachListeners = (instance: HTMLAudioElement) => {
   instance.addEventListener("play", () => {
     isPlaying = true;
@@ -117,15 +69,8 @@ const attachListeners = (instance: HTMLAudioElement) => {
   });
 
   instance.addEventListener("pause", () => {
-    if (isLoopRestarting) return;
     isPlaying = false;
     emit();
-  });
-
-  instance.addEventListener("timeupdate", handleTimeUpdate);
-  instance.addEventListener("ended", handleEnded);
-  instance.addEventListener("loadedmetadata", () => {
-    loopFadeStarted = false;
   });
 };
 
@@ -136,7 +81,7 @@ export const getBackgroundAudioElement = () => {
   audio = new window.Audio(TRACK_SRC);
   (window as typeof window & { __portfolioBackgroundAudio?: HTMLAudioElement }).__portfolioBackgroundAudio = audio;
   audio.preload = "auto";
-  audio.loop = false;
+  audio.loop = true;
   audio.volume = 0;
   attachListeners(audio);
   return audio;
@@ -193,7 +138,6 @@ export const toggleBackgroundAudio = async () => {
   window.localStorage.setItem(USER_ENABLED_KEY, "true");
   window.sessionStorage.setItem(SESSION_UNLOCKED_KEY, "true");
   instance.volume = 0;
-  loopFadeStarted = false;
 
   try {
     await instance.play();
