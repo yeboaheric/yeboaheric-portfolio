@@ -639,6 +639,11 @@ html[data-theme="dark"] .site-header-menu-link.is-active {
   line-height: 1;
 }
 
+.hero-title-role {
+  font-weight: 200;
+  color: var(--color-secondary);
+}
+
 .hero-divider {
   width: min(100%, 33.5rem);
   height: 2px;

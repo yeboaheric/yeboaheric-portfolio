@@ -256,12 +256,12 @@ function HeroSection() {
                 className="block"
                 variants={fadeUp(0.08, 44)}
               >
-                Eric Yeboah
+                Yeboah Eric
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span
-                className="block"
+                className="block hero-title-role"
                 variants={fadeUp(0.14, 44)}
               >
                 Creative Engineer
@@ -331,7 +331,7 @@ function AboutSection() {
           </h3>
           <div className="about-paragraphs">
             <p>
-              I am Eric Yeboah, a full-stack minded creative engineer based in Accra, Ghana.
+              I am Yeboah Eric, a full-stack minded creative engineer based in Accra, Ghana.
               I build digital products that feel clear, useful, and carefully composed.
             </p>
             <p>

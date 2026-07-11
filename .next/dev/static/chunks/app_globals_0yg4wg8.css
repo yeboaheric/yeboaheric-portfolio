@@ -2161,7 +2161,7 @@ html[data-theme="dark"] .site-header-menu-link:hover, html[data-theme="dark"] .s
   width: min(17rem, 100vw - 2rem);
   padding: .8rem .9rem .9rem;
   position: absolute;
-  bottom: calc(100% - 1.1rem);
+  bottom: calc(50% - .2rem);
   left: 50%;
 }
 
