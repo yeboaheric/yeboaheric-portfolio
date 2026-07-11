@@ -34,6 +34,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { GithubMarkIcon, LinkedinMarkIcon } from "@/components/social-icons";
 
 export type NavItem = {
   label: string;
@@ -535,11 +536,11 @@ export const services: Service[] = [
 
 export const socialLinks = [
   { label: "Email", href: "mailto:oseiyeboaheric@outlook.com", icon: Mail },
-  { label: "GitHub", href: "https://github.com/yeboaheric", icon: Code2 },
+  { label: "GitHub", href: "https://github.com/yeboaheric", icon: GithubMarkIcon },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/yeboah-osei-eric-329b57296/",
-    icon: SquareCheck,
+    icon: LinkedinMarkIcon,
   },
 ];
 

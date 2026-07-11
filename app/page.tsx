@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowDown, BadgeCheck, Code2, Mail, Send } from "lucide-react";
+import { ArrowDown, Mail, Send } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ApproachSection } from "@/components/approach-section";
 import { ButtonLink } from "@/components/button-link";
@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { IntroLoader } from "@/components/intro-loader";
 import { fadeUp, scaleIn, softEase, staggerContainer } from "@/components/motion-tokens";
+import { GithubMarkIcon, LinkedinMarkIcon } from "@/components/social-icons";
 import { SkillsSection } from "@/components/skills-section";
 import { Timeline } from "@/components/timeline";
 import {
@@ -357,7 +358,7 @@ function ContactSection() {
               className="contact-social"
               aria-label="GitHub"
             >
-              <Code2 aria-hidden="true" size={17} strokeWidth={1.75} />
+              <GithubMarkIcon aria-hidden="true" size={17} />
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/yeboah-osei-eric-329b57296/"
@@ -367,7 +368,7 @@ function ContactSection() {
               className="contact-social"
               aria-label="LinkedIn"
             >
-              <BadgeCheck aria-hidden="true" size={17} strokeWidth={1.75} />
+              <LinkedinMarkIcon aria-hidden="true" size={17} />
             </motion.a>
           </div>
         </div>

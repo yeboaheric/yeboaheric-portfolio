@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, Code2, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { GithubMarkIcon, LinkedinMarkIcon } from "@/components/social-icons";
 import { navigation, type NavItem } from "@/data/portfolio";
 
 type FooterProps = {
@@ -55,7 +56,7 @@ export function Footer({ navigationItems = navigation }: FooterProps) {
               className="site-footer-social"
               aria-label="GitHub"
             >
-              <Code2 aria-hidden="true" size={17} strokeWidth={1.75} />
+              <GithubMarkIcon aria-hidden="true" size={17} />
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/yeboah-osei-eric-329b57296/"
@@ -65,7 +66,7 @@ export function Footer({ navigationItems = navigation }: FooterProps) {
               className="site-footer-social"
               aria-label="LinkedIn"
             >
-              <BadgeCheck aria-hidden="true" size={17} strokeWidth={1.75} />
+              <LinkedinMarkIcon aria-hidden="true" size={17} />
             </motion.a>
           </div>
         </div>
