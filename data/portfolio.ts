@@ -118,35 +118,35 @@ export const navigation: NavItem[] = [
 
 export const experience: TimelineItem[] = [
   {
-    date: "2025 - Present",
-    title: "Creative Engineer",
+    date: "2018 - Present",
+    title: "Product Designer",
     place: "Independent",
     description:
-      "Designing and building clean web experiences for small businesses, products, and personal brands.",
+      "Helping small businesses, products, and personal brands craft clear, useful, and carefully composed digital experiences.",
   },
   {
-    date: "2024 - 2025",
-    title: "Frontend Developer",
-    place: "Project-based work",
+    date: "2024 - Present",
+    title: "Fullstack Developer",
+    place: "Independent",
     description:
-      "Built responsive interfaces, landing pages, and reusable UI sections with a focus on clarity and speed.",
+      "Built and designed clean web experiences, landing pages, and reusable UI sections with a focus on clarity and speed.",
   },
 ];
 
 export const education: TimelineItem[] = [
   {
     date: "2022 - 2026",
-    title: "Ghana Communications Technology University",
-    place: "Self-directed learning",
+    title: "Software Engineering",
+    place: "Ghana Communications Technology University",
     description:
       "Studying full-stack development through practical projects, documentation, and consistent iteration.",
   },
   {
-    date: "2023 - 2024",
-    title: "Web Design Foundations",
-    place: "Independent practice",
+    date: "2018 - 2021",
+    title: "General Science",
+    place: "Adu Gyamfi Senior High School",
     description:
-      "Focused on HTML, CSS, JavaScript fundamentals, layout systems, and interface craft.",
+      "Focused on basic sciences, mathematics, and elective ICT, with a strong emphasis on problem-solving and analytical thinking.",
   },
 ];
 

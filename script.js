@@ -7,16 +7,16 @@ const navigation = [
 
 const experience = [
   {
-    date: "2025 - Present",
-    title: "Creative Engineer",
+    date: "2018 - Present",
+    title: "Product Designer",
     place: "Adwoa Fosua Guesthouse - Aduman",
-    description: "Designing and building clean web experiences for small businesses, products, and personal brands.",
+    description: "Helping small businesses, products, and personal brands craft clear, useful, and carefully composed digital experiences.",
   },
   {
-    date: "2024 - 2025",
-    title: "Frontend Developer",
-    place: "Project-based work",
-    description: "Built responsive interfaces, landing pages, and reusable UI sections with a focus on clarity and speed.",
+    date: "2024 - Present",
+    title: "Fullstack Developer",
+    place: "Independent",
+    description: "Built and designed clean web experiences, landing pages, and reusable UI sections with a focus on clarity and speed.",
   },
 ];
 
@@ -31,7 +31,7 @@ const education = [
     date: "2018 - 2021",
     title: "General Science",
     place: "Adu Gyamfi Senior High School",
-    description: "Focused on HTML, CSS, JavaScript fundamentals, layout systems, and interface craft.",
+    description: "Focused on basic sciences, mathematics, and elective ICT, with a strong emphasis on problem-solving and analytical thinking.",
   },
 ];
 
