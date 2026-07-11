@@ -1395,7 +1395,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/moon.mjs [app-ssr] (ecmascript) <export default as Moon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sun.mjs [app-ssr] (ecmascript) <export default as Sun>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$utils$2f$reduced$2d$motion$2f$use$2d$reduced$2d$motion$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$motion$2d$tokens$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/motion-tokens.ts [app-ssr] (ecmascript)");
@@ -1418,35 +1417,42 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const compactHeight = 60;
     const expandedHeight = compactHeight + 16 + navigationItems.length * 36 + Math.max(navigationItems.length - 1, 0) * 10 + 20;
-    const menuEase = [
-        0.4,
+    const expandEase = [
+        0.22,
+        1,
+        0.36,
+        1
+    ];
+    const morphEase = [
+        0.65,
         0,
-        0.2,
+        0.35,
         1
     ];
     const menuListVariants = {
         closed: {
             transition: {
-                staggerChildren: reduceMotion ? 0 : 0.035,
+                delayChildren: reduceMotion ? 0 : 0.04,
+                staggerChildren: reduceMotion ? 0 : 0.08,
                 staggerDirection: -1
             }
         },
         open: {
             transition: {
-                delayChildren: reduceMotion ? 0 : 0.14,
-                staggerChildren: reduceMotion ? 0 : 0.065
+                delayChildren: reduceMotion ? 0 : 0.3,
+                staggerChildren: reduceMotion ? 0 : 0.1
             }
         }
     };
     const menuItemVariants = {
         closed: {
             opacity: 0,
-            y: 8,
-            scale: 0.98,
-            filter: "blur(4px)",
+            y: 16,
+            scale: 0.985,
+            filter: "blur(6px)",
             transition: {
-                duration: reduceMotion ? 0 : 0.16,
-                ease: menuEase
+                duration: reduceMotion ? 0 : 0.28,
+                ease: expandEase
             }
         },
         open: {
@@ -1455,8 +1461,8 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
             scale: 1,
             filter: "blur(0px)",
             transition: {
-                duration: reduceMotion ? 0 : 0.28,
-                ease: menuEase
+                duration: reduceMotion ? 0 : 0.42,
+                ease: expandEase
             }
         }
     };
@@ -1538,9 +1544,9 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                 borderRadius: isOpen ? "1.5rem" : "1.25rem"
             },
             transition: {
-                duration: reduceMotion ? 0 : 0.4,
-                ease: menuEase,
-                delay: reduceMotion ? 0 : isOpen ? 0 : 0.08
+                duration: reduceMotion ? 0 : 0.62,
+                ease: expandEase,
+                delay: reduceMotion ? 0 : isOpen ? 0 : 0.22
             },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1554,7 +1560,7 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                             children: "Yeboah Eric"
                         }, void 0, false, {
                             fileName: "[project]/components/header.tsx",
-                            lineNumber: 156,
+                            lineNumber: 158,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1571,7 +1577,7 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                         strokeWidth: 1.75
                                     }, void 0, false, {
                                         fileName: "[project]/components/header.tsx",
-                                        lineNumber: 168,
+                                        lineNumber: 170,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
                                         "aria-hidden": "true",
@@ -1579,12 +1585,12 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                         strokeWidth: 1.75
                                     }, void 0, false, {
                                         fileName: "[project]/components/header.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 172,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/header.tsx",
-                                    lineNumber: 161,
+                                    lineNumber: 163,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1602,7 +1608,7 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].span, {
                                                 className: "site-header-menu-dot site-header-menu-dot-start",
                                                 animate: isOpen ? {
-                                                    x: 0,
+                                                    x: 8,
                                                     y: 0,
                                                     width: "1rem",
                                                     height: "2px",
@@ -1610,31 +1616,31 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                                     rotate: 45,
                                                     opacity: 1
                                                 } : {
-                                                    x: "-0.5rem",
+                                                    x: 0,
                                                     y: 0,
-                                                    width: "0.28rem",
-                                                    height: "0.28rem",
+                                                    width: "0.25rem",
+                                                    height: "0.25rem",
                                                     borderRadius: "999px",
                                                     rotate: 0,
                                                     opacity: 1
                                                 },
                                                 transition: {
-                                                    duration: reduceMotion ? 0 : 0.38,
-                                                    ease: menuEase,
+                                                    duration: reduceMotion ? 0 : 0.58,
+                                                    ease: morphEase,
                                                     delay: reduceMotion ? 0 : isOpen ? 0.02 : 0
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/components/header.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 185,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].span, {
                                                 className: "site-header-menu-dot site-header-menu-dot-middle",
                                                 animate: isOpen ? {
                                                     x: 0,
-                                                    y: "0.56rem",
+                                                    y: 10,
                                                     opacity: 0,
-                                                    scale: 0.55
+                                                    scale: 0.45
                                                 } : {
                                                     x: 0,
                                                     y: 0,
@@ -1642,19 +1648,19 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                                     scale: 1
                                                 },
                                                 transition: {
-                                                    duration: reduceMotion ? 0 : 0.36,
-                                                    ease: menuEase,
-                                                    delay: reduceMotion ? 0 : isOpen ? 0.05 : 0.06
+                                                    duration: reduceMotion ? 0 : 0.62,
+                                                    ease: morphEase,
+                                                    delay: reduceMotion ? 0 : isOpen ? 0.06 : 0.02
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/components/header.tsx",
-                                                lineNumber: 212,
+                                                lineNumber: 214,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].span, {
                                                 className: "site-header-menu-dot site-header-menu-dot-end",
                                                 animate: isOpen ? {
-                                                    x: 0,
+                                                    x: -8,
                                                     y: 0,
                                                     width: "1rem",
                                                     height: "2px",
@@ -1662,114 +1668,102 @@ function Header({ navigationItems = __TURBOPACK__imported__module__$5b$project$5
                                                     rotate: -45,
                                                     opacity: 1
                                                 } : {
-                                                    x: "0.5rem",
+                                                    x: 0,
                                                     y: 0,
-                                                    width: "0.28rem",
-                                                    height: "0.28rem",
+                                                    width: "0.25rem",
+                                                    height: "0.25rem",
                                                     borderRadius: "999px",
                                                     rotate: 0,
                                                     opacity: 1
                                                 },
                                                 transition: {
-                                                    duration: reduceMotion ? 0 : 0.38,
-                                                    ease: menuEase,
+                                                    duration: reduceMotion ? 0 : 0.58,
+                                                    ease: morphEase,
                                                     delay: reduceMotion ? 0 : isOpen ? 0.02 : 0
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/components/header.tsx",
-                                                lineNumber: 235,
+                                                lineNumber: 237,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/header.tsx",
-                                        lineNumber: 182,
+                                        lineNumber: 184,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/header.tsx",
-                                    lineNumber: 174,
+                                    lineNumber: 176,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/header.tsx",
-                            lineNumber: 160,
+                            lineNumber: 162,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/header.tsx",
-                    lineNumber: 155,
+                    lineNumber: 157,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                    id: "header-navigation",
+                    className: "site-header-panel",
                     initial: false,
-                    children: isOpen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                        id: "header-navigation",
-                        className: "site-header-panel",
-                        initial: reduceMotion ? false : {
-                            opacity: 0
-                        },
-                        animate: {
-                            opacity: 1
-                        },
-                        exit: reduceMotion ? undefined : {
-                            opacity: 0
-                        },
-                        transition: {
-                            duration: reduceMotion ? 0 : 0.18,
-                            ease: menuEase,
-                            delay: reduceMotion ? 0 : 0.1
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].nav, {
-                            className: "site-header-menu-links",
-                            "aria-label": "Expanded navigation",
-                            initial: "closed",
-                            animate: "open",
-                            exit: "closed",
-                            variants: menuListVariants,
-                            children: navigationItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                                    variants: menuItemVariants,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                        href: item.href,
-                                        className: `site-header-menu-link ${isItemActive(item.href) ? "is-active" : ""}`,
-                                        onClick: ()=>setIsOpen(false),
-                                        children: item.label
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/header.tsx",
-                                        lineNumber: 296,
-                                        columnNumber: 21
-                                    }, this)
-                                }, item.href, false, {
+                    animate: {
+                        opacity: isOpen ? 1 : 0,
+                        pointerEvents: isOpen ? "auto" : "none"
+                    },
+                    transition: {
+                        duration: reduceMotion ? 0 : isOpen ? 0.32 : 0.18,
+                        ease: expandEase,
+                        delay: reduceMotion ? 0 : isOpen ? 0.18 : 0
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].nav, {
+                        className: "site-header-menu-links",
+                        "aria-label": "Expanded navigation",
+                        initial: false,
+                        animate: isOpen ? "open" : "closed",
+                        variants: menuListVariants,
+                        children: navigationItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                                variants: menuItemVariants,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                    href: item.href,
+                                    className: `site-header-menu-link ${isItemActive(item.href) ? "is-active" : ""}`,
+                                    onClick: ()=>setIsOpen(false),
+                                    children: item.label
+                                }, void 0, false, {
                                     fileName: "[project]/components/header.tsx",
-                                    lineNumber: 292,
-                                    columnNumber: 19
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/header.tsx",
-                            lineNumber: 283,
-                            columnNumber: 15
-                        }, this)
+                                    lineNumber: 294,
+                                    columnNumber: 17
+                                }, this)
+                            }, item.href, false, {
+                                fileName: "[project]/components/header.tsx",
+                                lineNumber: 293,
+                                columnNumber: 15
+                            }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/header.tsx",
-                        lineNumber: 271,
-                        columnNumber: 13
-                    }, this) : null
+                        lineNumber: 285,
+                        columnNumber: 11
+                    }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/header.tsx",
-                    lineNumber: 269,
+                    lineNumber: 271,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/header.tsx",
-            lineNumber: 142,
+            lineNumber: 144,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/header.tsx",
-        lineNumber: 136,
+        lineNumber: 138,
         columnNumber: 5
     }, this);
 }

@@ -5,11 +5,11 @@ import { ArrowDown, BadgeCheck, Code2, Mail, Send } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ApproachSection } from "@/components/approach-section";
 import { ButtonLink } from "@/components/button-link";
+import { FeaturedProjectsDeck } from "@/components/featured-projects-deck";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { IntroLoader } from "@/components/intro-loader";
 import { fadeUp, scaleIn, softEase, staggerContainer } from "@/components/motion-tokens";
-import { ProjectRow } from "@/components/project-row";
 import { SkillsSection } from "@/components/skills-section";
 import { Timeline } from "@/components/timeline";
 import {
@@ -182,14 +182,15 @@ function ProjectsSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="projects" className="reference-section projects-section">
-      <div className="reference-container">
-        <h2 className="reference-section-title">Selected Projects</h2>
-        <div>
-          {projects.map((project, index) => (
-            <ProjectRow key={project.title} project={project} index={index} />
-          ))}
-        </div>
+    <section id="projects" className="projects-section featured-work-section">
+      <div className="featured-work-intro">
+        <h2 className="featured-work-title">
+          <span>Selected</span>
+          <span>Projects</span>
+        </h2>
+      </div>
+      <FeaturedProjectsDeck projects={projects} />
+      <div className="reference-container featured-work-footer">
         <motion.a
           variants={fadeUp(0.06, 18)}
           href="/projects"
@@ -209,6 +210,10 @@ function ProjectsSection() {
 function ServicesSection() {
   const reduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const iconMorphTransition = {
+    duration: reduceMotion ? 0 : 0.42,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  };
 
   return (
     <section id="services" className="reference-section services-home-section">
@@ -236,11 +241,59 @@ function ServicesSection() {
                 tabIndex={0}
               >
                 <motion.div
-                  animate={reduceMotion ? undefined : { rotate: isActive ? 360 : 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="service-card-icon-wrap"
+                  animate={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          scale: isActive ? [1, 0.84, 1.06, 1] : 1,
+                          rotate: isActive ? [0, -8, 4, 0] : 0,
+                        }
+                  }
+                  transition={iconMorphTransition}
                 >
-                  <Icon aria-hidden="true" size={20} strokeWidth={1.75} />
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-pulse"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [0, 0.18, 0] : 0,
+                            scale: isActive ? [0.65, 1.18, 1] : 0.65,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  />
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-glyph"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [1, 0.58, 1] : 1,
+                            scale: isActive ? [1, 0.72, 1] : 1,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  >
+                    <Icon aria-hidden="true" size={20} strokeWidth={1.75} />
+                  </motion.span>
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-dash"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [0, 1, 0] : 0,
+                            scaleX: isActive ? [0.2, 1, 0.2] : 0.2,
+                            y: isActive ? [6, 8, 6] : 6,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  />
                 </motion.div>
                 <div className="service-card-heading">
                   <div className="flex items-center gap-3">

@@ -238,7 +238,7 @@ const requirementsSections: RequirementsSection[] = [
 
 export function GetStartedPage() {
   const reduceMotion = useReducedMotion();
-  const [openSection, setOpenSection] = useState(requirementsSections[0].id);
+  const [openSection, setOpenSection] = useState("");
 
   return (
     <div className="get-started-page">

@@ -50,6 +50,10 @@ type ApproachSectionProps = {
 export function ApproachSection({ compact = false }: ApproachSectionProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const iconMorphTransition = {
+    duration: reduceMotion ? 0 : 0.42,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  };
 
   return (
     <div className={compact ? "approach-section is-compact" : "approach-section"}>
@@ -84,11 +88,59 @@ export function ApproachSection({ compact = false }: ApproachSectionProps) {
                   {step}
                 </span>
                 <motion.div
-                  animate={reduceMotion ? undefined : { rotate: isActive ? 360 : 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="approach-icon"
+                  animate={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          scale: isActive ? [1, 0.84, 1.06, 1] : 1,
+                          rotate: isActive ? [0, -8, 4, 0] : 0,
+                        }
+                  }
+                  transition={iconMorphTransition}
                 >
-                  <Icon aria-hidden="true" size={18} strokeWidth={1.5} />
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-pulse"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [0, 0.22, 0] : 0,
+                            scale: isActive ? [0.65, 1.18, 1] : 0.65,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  />
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-glyph"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [1, 0.58, 1] : 1,
+                            scale: isActive ? [1, 0.72, 1] : 1,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  >
+                    <Icon aria-hidden="true" size={18} strokeWidth={1.5} />
+                  </motion.span>
+                  <motion.span
+                    aria-hidden="true"
+                    className="morph-icon-dash"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            opacity: isActive ? [0, 1, 0] : 0,
+                            scaleX: isActive ? [0.2, 1, 0.2] : 0.2,
+                            y: isActive ? [5, 7, 5] : 5,
+                          }
+                    }
+                    transition={iconMorphTransition}
+                  />
                 </motion.div>
               </div>
               <h4 className="approach-item-title">
