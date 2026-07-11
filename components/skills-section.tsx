@@ -4,10 +4,16 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import { techStack } from "@/data/portfolio";
 
-type OrbitStyle = CSSProperties & {
-  "--orbit-angle": string;
-  "--orbit-radius": string;
+type TechPillStyle = CSSProperties & {
+  "--tech-color": string;
 };
+
+const marqueeRows = [
+  techStack.slice(0, 6),
+  techStack.slice(6, 12),
+  techStack.slice(12, 18),
+  techStack.slice(18),
+];
 
 export function SkillsSection() {
   return (
@@ -18,38 +24,44 @@ export function SkillsSection() {
           I work with a variety of modern technologies to build robust and performant applications.
           My core expertise lies in JavaScript frameworks with a focus on React and its ecosystem.
         </p>
+      </div>
 
-        <div className="tech-orbit" aria-label="Technology stack">
-          <div className="tech-orbit-track">
-            {techStack.map((item, index) => {
-              const ring = index % 3;
-              const ringCount = ring === 0 ? 8 : ring === 1 ? 8 : 7;
-              const position = Math.floor(index / 3);
-              const angle = (position * 360) / ringCount + ring * 14;
-              const radius = ring === 0 ? 72 : ring === 1 ? 126 : 178;
+      <div className="skills-marquee-shell" aria-label="Technology stack">
+        {marqueeRows.map((row, rowIndex) => {
+          const repeatedRow = [...row, ...row];
 
-              return (
-                <a
-                  key={item.name}
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="tech-orbit-item"
-                  title={item.name}
-                  aria-label={item.name}
-                  style={
-                    {
-                      "--orbit-angle": `${angle}deg`,
-                      "--orbit-radius": `${radius}px`,
-                    } as OrbitStyle
-                  }
-                >
-                  <Image src={item.icon} alt={`${item.name} logo`} width={28} height={28} />
-                </a>
-              );
-            })}
-          </div>
-        </div>
+          return (
+            <div
+              className={`tech-marquee-row ${rowIndex % 2 === 0 ? "moves-right" : "moves-left"}`}
+              key={`tech-row-${rowIndex}`}
+            >
+              <div className="tech-marquee-track">
+                {[0, 1].map((segmentIndex) => (
+                  <div
+                    className="tech-marquee-segment"
+                    aria-hidden={segmentIndex === 1 ? "true" : undefined}
+                    key={`segment-${segmentIndex}`}
+                  >
+                    {repeatedRow.map((item, itemIndex) => (
+                      <a
+                        className={`tech-marquee-pill ${item.color === "#000000" ? "is-monochrome" : ""}`}
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ "--tech-color": item.color } as TechPillStyle}
+                        key={`${segmentIndex}-${item.name}-${itemIndex}`}
+                        tabIndex={segmentIndex === 1 ? -1 : undefined}
+                      >
+                        <Image src={item.icon} alt="" width={34} height={34} />
+                        <span>{item.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
