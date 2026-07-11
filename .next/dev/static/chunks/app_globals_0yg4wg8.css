@@ -1798,6 +1798,7 @@ button, a {
   align-items: center;
   transition: border-color .22s, color .22s;
   display: flex;
+  position: relative;
 }
 
 .service-card:hover .service-card-icon-wrap, .service-card:focus-within .service-card-icon-wrap {
@@ -2088,6 +2089,13 @@ html[data-theme="dark"] .site-header-menu-link:hover, html[data-theme="dark"] .s
   position: relative;
 }
 
+.hero-monogram-anchor {
+  flex-direction: column;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+
 .hero-monogram {
   border: 1px solid var(--color-border);
   width: 6rem;
@@ -2099,6 +2107,95 @@ html[data-theme="dark"] .site-header-menu-link:hover, html[data-theme="dark"] .s
   font-size: 1.875rem;
   font-weight: 300;
   display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-monogram-content {
+  justify-content: center;
+  align-items: center;
+  gap: .02em;
+  line-height: 1;
+  display: inline-flex;
+  position: relative;
+}
+
+.hero-glyph-slot {
+  justify-content: center;
+  align-items: center;
+  width: .72em;
+  height: 1em;
+  display: inline-flex;
+  position: relative;
+}
+
+.hero-glyph-slot-middle {
+  width: .38em;
+}
+
+.hero-glyph-char {
+  transform-origin: center;
+  will-change: transform, opacity;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: absolute;
+  inset: 0;
+}
+
+.hero-glyph-base {
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+.hero-glyph-target {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+.hero-fact-popout {
+  z-index: 20;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 1rem;
+  width: min(17rem, 100vw - 2rem);
+  padding: .8rem .9rem .9rem;
+  position: absolute;
+  bottom: calc(100% - 1.1rem);
+  left: 50%;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .hero-fact-popout {
+    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  }
+}
+
+.hero-fact-popout {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  transform: translateX(-50%);
+  box-shadow: 0 14px 36px #0f0f0f1a;
+}
+
+.hero-fact-label {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: lowercase;
+  margin-bottom: .45rem;
+  font-size: .68rem;
+  line-height: 1;
+  display: block;
+}
+
+.hero-fact-text {
+  color: var(--color-primary);
+  text-wrap: balance;
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.45;
 }
 
 .hero-title-wrap {
@@ -2295,6 +2392,37 @@ html[data-theme="dark"] .site-header-menu-link:hover, html[data-theme="dark"] .s
   width: 2rem;
   height: 2rem;
   display: flex;
+  position: relative;
+}
+
+.morph-icon-pulse {
+  border-radius: inherit;
+  pointer-events: none;
+  background: currentColor;
+  position: absolute;
+  inset: .25rem;
+}
+
+.morph-icon-glyph {
+  z-index: 1;
+  transform-origin: center;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+
+.morph-icon-dash {
+  z-index: 1;
+  transform-origin: center;
+  pointer-events: none;
+  background: currentColor;
+  border-radius: 999px;
+  width: .875rem;
+  height: 1px;
+  position: absolute;
+  bottom: .25rem;
+  left: 50%;
 }
 
 .approach-item-title {

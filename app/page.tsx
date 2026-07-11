@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowDown, Mail, Send } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ApproachSection } from "@/components/approach-section";
 import { ButtonLink } from "@/components/button-link";
 import { FeaturedProjectsDeck } from "@/components/featured-projects-deck";
@@ -19,6 +19,45 @@ import {
   projects,
   services,
 } from "@/data/portfolio";
+
+const HERO_FACTS = [
+  "A typical cumulus cloud weighs around a million tonnes, yet it floats because it's slightly less dense than the surrounding air.",
+  "Venus is the only planet in the solar system that spins clockwise.",
+  "A single rotation of Venus takes longer than its entire trip around the Sun.",
+  "Sudan has more pyramids than Egypt — roughly 255 compared to Egypt's 138.",
+  "The Eiffel Tower grows about 6 inches taller in summer as its iron expands in the heat.",
+  "Measured from base to peak, Hawaii's Mauna Kea is taller than Mount Everest — most of it is just underwater.",
+  "Humans have mapped the Moon in more detail than the ocean floor; we've explored less than 0.001% of the seabed.",
+  "The oldest cat on record lived to 38 years old.",
+  "Scotland's official national animal is the unicorn.",
+  "Australia's diameter is actually larger than the Moon's.",
+  "Africa is so vast it stretches across all four hemispheres at once.",
+  "Laid end to end, all of Earth's bacteria would stretch further than 10 billion light-years.",
+  "A tie worn too tightly can reduce blood flow to the brain by up to 7.5%.",
+  "Every color of Froot Loops is actually the same flavor.",
+  "A thunderstorm nicknamed Hector forms over northern Australia almost every single afternoon at 3pm.",
+  "Most household dust is made up of shed human skin cells.",
+  "The Milky Way galaxy is home to more than 200 billion stars.",
+  "On the distant exoplanet HD 189733b, fierce winds blow molten glass sideways through the atmosphere.",
+  "Some planets drift through space without ever orbiting a star — they're called rogue planets.",
+  "The largest known volcano in the solar system sits on Mars and is roughly 373 miles wide.",
+  "Earth's atmosphere currently holds more carbon dioxide than at any point in the last 800,000 years.",
+  "A total solar eclipse can last a maximum of about seven and a half minutes.",
+  "The oldest dog on record lived to be 29.5 years old.",
+  "Some caves are so enormous they generate their own weather, complete with clouds and wind.",
+  "Waterfalls exist underwater, caused by differences in temperature and salinity between ocean layers.",
+];
+
+function shuffleFacts(facts: string[]) {
+  const next = [...facts];
+
+  for (let index = next.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
+  }
+
+  return next;
+}
 
 export default function HomePage() {
   const reduceMotion = useReducedMotion();
@@ -54,6 +93,43 @@ export default function HomePage() {
 
 function HeroSection() {
   const reduceMotion = useReducedMotion();
+  const [isMonogramHovered, setIsMonogramHovered] = useState(false);
+  const [activeFact, setActiveFact] = useState(HERO_FACTS[0]);
+  const glyphEase: [number, number, number, number] = [0.65, 0, 0.35, 1];
+  const slashEase: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
+  const glyphDuration = reduceMotion ? 0 : 0.6;
+  const slashDelay = reduceMotion ? 0 : 0.09;
+  const factQueueRef = useRef<string[]>(shuffleFacts(HERO_FACTS));
+  const lastFactRef = useRef<string | null>(null);
+
+  const getNextFact = () => {
+    if (factQueueRef.current.length === 0) {
+      const reshuffled = shuffleFacts(HERO_FACTS);
+
+      if (
+        lastFactRef.current &&
+        reshuffled.length > 1 &&
+        reshuffled[0] === lastFactRef.current
+      ) {
+        [reshuffled[0], reshuffled[1]] = [reshuffled[1], reshuffled[0]];
+      }
+
+      factQueueRef.current = reshuffled;
+    }
+
+    const nextFact = factQueueRef.current.shift() ?? HERO_FACTS[0];
+    lastFactRef.current = nextFact;
+    return nextFact;
+  };
+
+  const handleMonogramEnter = () => {
+    setActiveFact(getNextFact());
+    setIsMonogramHovered(true);
+  };
+
+  const handleMonogramLeave = () => {
+    setIsMonogramHovered(false);
+  };
 
   return (
     <section id="home" className="home-hero">
@@ -65,9 +141,112 @@ function HeroSection() {
       >
         <motion.div
           variants={scaleIn(0.02)}
-          className="hero-monogram"
+          className="hero-monogram-anchor"
+          onHoverStart={handleMonogramEnter}
+          onHoverEnd={handleMonogramLeave}
         >
-          AY
+          <div className="hero-monogram">
+            <span className="hero-monogram-content" aria-hidden="true">
+              <span className="hero-glyph-slot">
+                <motion.span
+                  className="hero-glyph-char hero-glyph-base"
+                  animate={{
+                    opacity: isMonogramHovered ? 0 : 1,
+                    scale: isMonogramHovered ? 0.85 : 1,
+                    rotate: isMonogramHovered ? 8 : 0,
+                  }}
+                  transition={{ duration: glyphDuration, ease: glyphEase }}
+                >
+                  Y
+                </motion.span>
+                <motion.span
+                  className="hero-glyph-char hero-glyph-target"
+                  animate={{
+                    opacity: isMonogramHovered ? 1 : 0,
+                    scale: isMonogramHovered ? 1 : 0.85,
+                    rotate: isMonogramHovered ? 0 : -8,
+                  }}
+                  transition={{ duration: glyphDuration, ease: glyphEase }}
+                >
+                  {"<"}
+                </motion.span>
+              </span>
+
+              <span className="hero-glyph-slot hero-glyph-slot-middle">
+                <motion.span
+                  className="hero-glyph-char hero-glyph-target"
+                  animate={{
+                    opacity: isMonogramHovered ? 1 : 0,
+                    scale: isMonogramHovered ? [0, 1.1, 1] : 0,
+                    y: isMonogramHovered ? [4, -1, 0] : 4,
+                  }}
+                  transition={{
+                    duration: glyphDuration,
+                    delay: slashDelay,
+                    ease: slashEase,
+                  }}
+                >
+                  /
+                </motion.span>
+              </span>
+
+              <span className="hero-glyph-slot">
+                <motion.span
+                  className="hero-glyph-char hero-glyph-base"
+                  animate={{
+                    opacity: isMonogramHovered ? 0 : 1,
+                    scale: isMonogramHovered ? 0.85 : 1,
+                    rotate: isMonogramHovered ? -8 : 0,
+                  }}
+                  transition={{ duration: glyphDuration, ease: glyphEase }}
+                >
+                  E
+                </motion.span>
+                <motion.span
+                  className="hero-glyph-char hero-glyph-target"
+                  animate={{
+                    opacity: isMonogramHovered ? 1 : 0,
+                    scale: isMonogramHovered ? 1 : 0.85,
+                    rotate: isMonogramHovered ? 0 : 8,
+                  }}
+                  transition={{ duration: glyphDuration, ease: glyphEase }}
+                >
+                  {">"}
+                </motion.span>
+              </span>
+            </span>
+          </div>
+
+          <AnimatePresence mode="wait">
+            {isMonogramHovered ? (
+              <motion.div
+                key={activeFact}
+                className="hero-fact-popout"
+                initial={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, scale: 0.95, y: -6 }
+                }
+                animate={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 1, scale: 1, y: 0 }
+                }
+                exit={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, scale: 0.97, y: -4 }
+                }
+                transition={{
+                  duration: reduceMotion ? 0 : 0.34,
+                  ease: glyphEase,
+                }}
+              >
+                <span className="hero-fact-label">// did you know</span>
+                <p className="hero-fact-text">{activeFact}</p>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </motion.div>
 
         <div className="hero-title-wrap">
